@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        numero=prompt("Dame un numero para realizar su factorial: ")
+        function factorialIter(numero){
+            var resultado = numero;
+
+            for(let i=numero-1; 0<i; i--){
+                
+                resultado *=i;
+            }
+
+            return resultado;
+
+        }
+
+    document.write(factorialIter(numero));
+
+
+
+    </script>
+</body>
+</html>

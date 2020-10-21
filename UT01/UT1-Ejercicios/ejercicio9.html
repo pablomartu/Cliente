@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var edad=prompt("Introduce la edad");
+        var respuesta = (edad <0 ? "Error" :
+                        edad > 0 && edad<=12 ? "Es un niño" :
+                        edad >=13 && edad<=26 ? "Es un joben" :
+                        edad >=27 && edad<=60 ? "Es un adulto" :
+                        "Es un jubilado");
+
+        document.write(respuesta);
+    </script>
+</body>
+</html>

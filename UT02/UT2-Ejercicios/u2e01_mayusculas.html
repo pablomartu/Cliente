@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var diaSemana = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+
+        for (let i = 0; i < diaSemana.length; i++) {
+            let letraInicial = diaSemana[i].slice(0, 1)
+            let dia = diaSemana[i].slice(1, diaSemana[i].length);
+            diaSemana[i] = letraInicial.toUpperCase() + dia;
+
+
+        }
+        document.write(diaSemana);
+    </script>
+</body>
+
+</html>

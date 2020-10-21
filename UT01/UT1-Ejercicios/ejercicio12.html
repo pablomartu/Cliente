@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        for (let filas = 0; filas < 9; filas++) {
+            var antiguoCaracter="";
+            var cadena="";
+                while(cadena.length < 8){
+                    
+                    if(filas%2==0){
+                        if(antiguoCaracter=="" || antiguoCaracter==" "){
+                            cadena += "#";
+                            antiguoCaracter ="#";
+                        }else{
+                            cadena += "\u00A0";
+                            antiguoCaracter =" ";
+                        } 
+                    }
+
+                    if(filas%2 !=0){
+                        if(antiguoCaracter=="" || antiguoCaracter== "#"){
+                            cadena += "\u00A0";
+                            antiguoCaracter =" ";
+                        }else{
+                            cadena += "#";
+                            antiguoCaracter ="#";
+                        }
+                        
+                    }
+                }
+            document.write(cadena + "<br>");
+        }
+
+    
+    
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function contarCaracter(cadena, letra) {
+            var indices = [];
+            for (var i = 0; i < cadena.length; i++) {
+                if (cadena[i] == letra){
+                    indices.push(i);
+                }
+            }
+            return indices.length;
+        }
+
+        var repeticiones = contarCaracter("Cuantas 'B' aparecen Bien puestas en esta cadena Bien formada.", "B");
+
+        document.write(repeticiones + "<br>");
+
+
+        function contarBs(cadena){
+            var indices = [];
+            for (var i = 0; i < cadena.length; i++) {
+                if (cadena[i] == "B"){
+                    indices.push(i);
+                }
+            }
+            return indices.length;
+        }
+
+        var repeticiones1 = contarBs("Cuantas 'B' aparecen Bien puestas en esta cadena Bien formada.");
+        document.write(repeticiones1);
+
+
+
+        
+    </script>
+
+</body>
+
+</html>

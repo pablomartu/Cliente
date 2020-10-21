@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var opcion = prompt("Elige la opcion que quieres que escoga para realizar el perimetro: S=Un cuadrado T=Un triángulo C= Un círculo");
+
+        if(opcion=="S" || opcion=="s"){
+            var lados= prompt("Dime el tamaño de los lados");
+            var resultadoArea = Math.pow(lados, 2);
+            var resultadoPerimetro = lados * 4;
+            document.write("¿Que figura a esogigo?: " + "\n" + "El usuario ha respondido: " + "Cuadrado");
+            document.write("¿De que tamaño es el lado?" + "\n" + "El usuario ha respondido: " + lados)
+            document.write("El Área del cuadrado es de: " + resultadoArea);
+            document.write("El Perímetro del cuadrado es de: " + resultadoPerimetro);
+        }
+
+        if(opcion=="T" || opcion=="t"){
+            var altura= prompt("Dime el tamaño de la altura");
+            var base= prompt("Dime el tamaño de la base");
+            var resultadoArea = (base*altura)/2;
+            var tipoTriangulo = prompt("Es un triangulo Isosceles, Equilatero ");
+
+            
+            document.write("¿De que tamaño es la base?" + "\n" + "El usuario ha respondido: " + base);
+            document.write("¿De que tamaño es la altura?" + "\n" + "El usuario ha respondido: " + altura)
+
+                if(tipoTriangulo == "Isosceles"){
+                    var hipoteusaIsosceles = Math.sqrt(Math.pow(base, 2)+Math.pow(altura, 2));
+                    var perimetroIsosceles = (hipoteusaIsosceles * 2)+base;
+                    document.write("¿Que figura a esogigo?: " + "\n" + "El usuario ha respondido: " + "Triangulo Isosceles");
+                    document.write("El Perímetro del triangulo Isoceles es de: " + perimetroIsosceles);
+                }
+
+                if(tipoTriangulo== "Equilatero"){
+                    var perimetroEquilatero= base*3;
+                    document.write("¿Que figura a esogigo?: " + "\n" + "El usuario ha respondido: " + "Triangulo Esquilatero");
+                    document.write("El Perímetro del triangulo Equilatero es de: " + perimetroEquilatero);
+                }
+                
+            document.write("El Área del triangulo es de: " + resultadoArea);
+            
+        }
+
+        if(opcion=="C" || opcion=="c"){
+            var radio= prompt("Dime el radio del circulo");
+            var resultadoArea = Math.PI * math.pow(radio, 2);
+            var resultadoPerimetro = 2 * math.PI * radio;
+
+            document.write("¿Que figura a esogigo?: " + "\n" + "El usuario ha respondido: " + "Circulo");
+            document.write("¿De que tamaño es el radio?" + "\n" + "El usuario ha respondido: " + radio) 
+            document.write("El Área del circulo es de: " + resultadoArea);
+            document.write("El Perímetro del circulo es de: " + resultadoPerimetro);
+            
+        }
+
+
+        
+    </script>
+</body>
+</html>

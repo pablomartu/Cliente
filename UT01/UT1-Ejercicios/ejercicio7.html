@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         <p>Hola a la página secreta</p>
+
+        do{
+            var nombre = prompt("Inroduce el nombre del primer presidente de la democracia.");
+
+            if(nombre=!"Adolfo Suárez" || nombre != "Adolfo Suarez"){
+                alert("Error Intentalo de nuevo.");
+                var nombre = prompt("Inroduce el nombre del primer presidente de la democracia.");
+            }
+
+            if(nombre=="Adolfo"){
+                alert("Error Intentalo de nuevo.");
+                var nombre = prompt("Te falta el apellido. ¿Cuál fue el primer presidente de la democracia española?");
+            }
+
+            if(nombre=="Suárez" || nombre == "Suarez"){
+                alert("Error Intentalo de nuevo.");
+                var nombre = prompt("Te falta el nombre. ¿Cuál fue el primer presidente de la democracia española?");
+            }
+
+        }while(nombre !="Adolfo Suárez" || nombre != "Adolfo Suarez");
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var cadena = prompt("Dame una frase");
+        // cadena= cadena.trim();//elimina los espacios en blanco antes y despues de la cadena
+        // var palabras = 0;
+        // if (cadena !="") {
+        //     for (let i = 0; i < cadena.length; i++) {
+        //         let caracter = cadena.charAt(i);
+        //         if (caracter == " ") {
+        //             palabras++;
+        //         }
+        //     }
+        //     palabras++;
+        //     document.write("El numero de palabras que compone la frase que me has dado es de: " + palabras);
+        // }else{
+        //     document.write("No hay ninguna palabra");
+        // }
+
+        //Otra formas mas sencilla
+        var cadena1 = prompt("Dame una frase");
+        var numero = cadena1.split(" ").length;
+        document.write("El numero de palabras es de: " + numero);
+        
+    </script>
+</body>
+
+</html>

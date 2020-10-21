@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var numero;
+        document.write("LISTADO DE NUMEROS DEL 1 AL 100"+ "<br>"); 
+        for (numero = 0; numero <= 100; numero++) {
+
+            if(numero % 3 == 0 && numero % 5 == 0){
+                document.write("El "+ numero + " FizzBuzz" + "<br>");
+            }else{
+
+                if(numero % 3 == 0){
+                    document.write("El "+ numero + " Fizz" + "<br>");
+                }else if(numero % 5 == 0 && numero % 3 != 0){
+                    document.write("El "+ numero + " Buzz" + "<br>");
+                }
+            }
+            
+        }
+    </script>
+</body>
+</html>

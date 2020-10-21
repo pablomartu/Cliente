@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var cadena = " ";
+        hora = 9;
+        minutos = 0.00;
+
+        for (var i; hora < 21.30;) {
+
+
+            if (minutos == 0.60) {
+                hora = hora + 1;
+                minutos = 0.00
+            }
+            if (hora > 21) {
+                break;
+            }
+            if (minutos == 0.00) {
+                cadena += hora + ".00" + "<br>";
+            }
+            if (minutos == 0.30) {
+
+                cadena += hora + minutos + "0" + "<br>";
+            }
+            minutos = minutos + 0.30;
+
+        }
+        document.write(cadena);
+    </script>
+
+</body>
+
+</html>

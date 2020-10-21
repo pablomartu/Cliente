@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fiborRecur(n){
+        var1=0;
+        var2=1;
+        resultado=0;
+        cadena=" ";
+
+        for(var i=0;i<n-1;i++){
+            resultado=var1+var2;
+            var1=var2;
+            var2=resultado;
+            cadena +=resultado +"<br>"
+
+        }
+        return cadena;
+       
+    }
+    document.write(fiborRecur(7));
+    
+    
+    </script>
+</body>
+</html>
