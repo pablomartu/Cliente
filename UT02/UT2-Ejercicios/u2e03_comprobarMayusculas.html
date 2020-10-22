@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         var cadena = prompt("Dame una frase");
 
         function comprobarMayus(cadena) {
-            if (cadena == cadena.toUpperCase()) {
-                
+            var arrayCadena = cadena.split("");
+            var mayus = false;
+            var minus = false;
+
+            for (let i = 0; i < arrayCadena.length; i++) {
+                if (arrayCadena[i] == arrayCadena[i].toUpperCase()) {
+                    mayus = true;
+                }
+
+                if (arrayCadena[i] == arrayCadena[i].toLowerCase()) {
+                    minus = true;
+                }
+            }
+
+            if (mayus == true && minus == false) {
+                document.write("La cadena esta compuesta por Mayusculas");
+            } else if (mayus == false && minus == true) {
+                document.write("La cadena esta compuesta por Minusculas");
+            } else if (mayus == true && minus == true) {
+                document.write("La cadena esta compuesta por Mayusculas y Minusculas");
             }
         }
-
+        comprobarMayus(cadena);
     </script>
 </body>
+
 </html>
