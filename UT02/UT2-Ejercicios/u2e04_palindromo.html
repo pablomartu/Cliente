@@ -9,14 +9,16 @@
 
 <body>
     <script>
-        var palindromo = "La ruta nos aportó otro paso natural";
+        var palindromo = "La ruta nos aporto otro paso natural";
         var palindromoS;
 
         function palindromoC(palindromo) {
             var validar;
+            palindromo=palindromo.toLowerCase();
+            palindromoS=palindromo;
+
             palindromo = palindromo.replace(/ /g, "").split("");
-            palindromoS = new Array (palindromo);
-            palindromoS = palindromoS.reverse();
+            palindromoS = palindromoS.replace(/ /g, "").split("").reverse();
 
             for (let i = 0; i < palindromo.length; i++) {
                 if (palindromo[i] == palindromoS[i]) {
