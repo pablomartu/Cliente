@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        var palindromo = "La ruta nos aporto otro paso natural";
-        var palindromoS;
+      var palindromo = "La ruta nos aporto otro paso natural";
+      var palindromoS;
 
-        function palindromoC(palindromo) {
-            var validar;
-            palindromo=palindromo.toLowerCase();
-            palindromoS=palindromo;
+      function palindromoC(palindromo) {
+        var validar;
+        palindromo = palindromo.toLowerCase();
+        palindromoS = palindromo;
 
-            palindromo = palindromo.replace(/ /g, "").split("");
-            palindromoS = palindromoS.replace(/ /g, "").split("").reverse();
+        palindromo = palindromo.replace(/ /g, "").split("");
+        palindromoS = palindromoS.replace(/ /g, "").split("").reverse();
 
-            for (let i = 0; i < palindromo.length; i++) {
-                if (palindromo[i] == palindromoS[i]) {
-                    validar = true;
-                } else {
-                    validar = false;
-                    break;
-                }
-            }
-
-            if (validar == true) {
-                document.write("Es palindromo");
-            }
-
-            if (validar == false) {
-                document.write("No es palindromo");
-            }
+        for (let i = 0; i < palindromo.length; i++) {
+          if (palindromo[i] == palindromoS[i]) {
+            validar = true;
+          } else {
+            validar = false;
+            break;
+          }
         }
 
-        palindromoC(palindromo);
-    </script>
-</body>
+        if (validar == true) {
+          document.write("Es palindromo");
+        }
 
+        if (validar == false) {
+          document.write("No es palindromo");
+        }
+      }
+
+      palindromoC(palindromo);
+    </script>
+  </body>
 </html>
