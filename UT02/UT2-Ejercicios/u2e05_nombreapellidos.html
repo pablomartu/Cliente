@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var nombre = prompt("Dame tu nombre y apellidos");
+        var nombreArray = nombre.split(" ");
+
+        for (let i = 0; i < nombreArray.length; i++) {
+            var tamaño = nombreArray[i].length;
+            if (i == 0) {
+                document.write("El tamaño del nombre es de: " + tamaño + "<br>");
+            } else if (i == 1) {
+                document.write("El tamaño del primer apellido es de: " + tamaño + "<br>");
+            } else {
+                document.write("El tamaño del segundo apellido es de: " + tamaño + "<br>");
+            }
+        }
+
+        document.write(nombre.toLowerCase() + " " + nombre.toUpperCase() + "<br>");
+
+        document.write("Nombre: " + nombreArray[0] + "<br>" +
+            "Apellido 1: " + nombreArray[1] + "<br>" +
+            "Apellido 2: " + nombreArray[2] + "<br>");
+
+        document.write(nombreArray[0].substring(0, 1) +
+            nombreArray[1].substring(0, nombreArray[1].length) +
+            nombreArray[2].substring(0, 1) + "<br>");
+
+        document.write(nombreArray[0].substring(0, 3) +
+            nombreArray[1].substring(0, 3) +
+            nombreArray[2].substring(0, 3));
+    </script>
+
+</body>
+
+</html>
