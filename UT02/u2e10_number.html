@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var numero = prompt("Dame un numero");
+        var mensaje = prompt("1.Su valor exponencial." +
+            "2.El número con 4 decimales." +
+            "3.El número en binario." +
+            "4.El número en octal." +
+            "5.El número en hexadecimal.");
+
+        if (mensaje == "1") {
+            var exponencial = numero.toExponential(numero);
+            document.write(exponencial);
+        }
+        if (mensaje == "2") {
+            var decimal = numero.toFixed(4);
+            document.write(decimal);
+        }
+        if (mensaje == "3") {
+            var binario = numero.toString(2);
+            document.write(binario);
+        }
+        if (mensaje == "4") {
+            var octal = numero.toString(8);
+            document.write(octal);
+
+        }
+        if (mensaje == "5") {
+            var hexadecimal = numero.toString(16);
+            document.write(hexadecimal);
+
+        }
+    </script>
+</body>
+
+</html>
