@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var mensaje = prompt("1.Potencia." +
+            "2.Raíz." +
+            "3.Redondeo." +
+            "4.Trigonometría.");
+
+        if (mensaje == "1") {
+            var base = prompt("Dame una base");
+            var exponente = prompt("Dame un exponente");
+            var resultado = Math.pow(base, exponente);
+            document.write("La potencia es de: " + resultado);
+        }
+
+        if (mensaje == "2") {
+            var numero = prompt("Dame un numero no negativo");
+            if (numero > 0) {
+                var raiz = Math.sqrt(numero);
+                document.write("La raiz cuadrada de: " + numero +" es: "+ raiz);
+            } else {
+                alert("El numero es negativo");
+            }
+        }
+
+        if (mensaje == "3") {
+            var numero = prompt("Dame un numero decimal");
+            var numeroA = Math.round(numero);
+            document.write("El numero redondeado es de: " + numeroA);
+        }
+
+        if (mensaje == "4") {
+            var numero = prompt("Dame un angulo entre 0 y 360");
+            var tangente = Math.tan(numero);
+            var seno = Math.sin(numero);
+            var coseno = Math.acos(numero);
+            document.write("La tangente es de: " + tangente + " el coseno es: " + coseno + " el seno es de: " + seno);
+        }
+    </script>
+</body>
+
+</html>

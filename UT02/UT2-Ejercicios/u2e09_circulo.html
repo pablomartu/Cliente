@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var radio = prompt("Dame el valor del radio");
+        var mensaje = prompt("1.El valor del radio." +
+            "2.El valor del diámetro." +
+            "3.El valor del perímetro de la circunferencia." +
+            "4.El valor del área del círculo." +
+            "5.El valor del área de la esfera." +
+            "6.El valor del volumen de la esfera");
+
+
+        if (mensaje == "1") {
+            document.write("El valor del radio es de: " + radio);
+        }
+        if (mensaje == "2") {
+            var diametro = radio + radio;
+            document.write("El valor del diametro es de: " + diametro);
+        }
+        if (mensaje == "3") {
+            var perimetro = Math.PI * radio * 2;
+            document.write("El valor del perimetro es de: " + perimetro);
+        }
+        if (mensaje == "4") {
+            var area = Math.PI * Math.pow(radio,2);
+            document.write("El valor del area es de: " + area);
+        }
+        if (mensaje == "5") {
+            var areaEsfera = 4 * Math.PI * Math.pow(radio,2);
+            document.write("El valor del area de una Esfera es de: " + areaEsfera);
+        }
+        if (mensaje == "6") {
+            var volumenEsfera = 4/3 * Math.PI * Math.pow(radio,3);
+            document.write("El valor del volumen de una Esfera es de: " + volumenEsfera);
+
+        }
+    </script>
+
+</body>
+
+</html>

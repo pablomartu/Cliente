@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var dni = "71709736Z";
+        var nie = "Y6478436V";
+        var arrayNie = ['X', 'Y', 'Z'];
+        var arrayCom = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H',
+            'L', 'C', 'K', 'E'
+        ];
+
+        function comprobarDni(dni) {
+            var dniSinL = dni.substr(0, 8);
+            var dniL = dni.substr(8, 1);
+            var resto = dniSinL % 23;
+            if (dniL.length == '1' && dniSinL.length == '8') {
+                if (dniL == arrayCom[resto]) {
+                    alert("El Dni es Correcto");
+                } else {
+                    alert("El Dni es incorrecto");
+                }
+            } else {
+                alert("El dni no esta bien escrito. Recuerda que tiene que tener 8 digitos numericos y 1 una Letra.");
+            }
+        }
+
+        function comprobarNie(nie) {
+            var nieP = nie.substr(0, 1);
+            var nieF = nie.substr(8,1);
+
+            if (nieP == 'X') {
+                var nieSinL = 0 + nie.substr(1,8);
+            } else if (nieP == 'Y') {
+                var nieSinL = 1 + nie.substr(1,8);
+            } else if (nieP == 'Z') {
+                var nieSinL = 2 + nie.substr(1,8);
+            }
+
+            var nieT = nieSinL.substr(0, 8);
+            var resto = nieT % 23;
+            
+                if (nieF == arrayCom[resto]) {
+                    alert("El nie es Correcto");
+                } else {
+                    alert("El nie es incorrecto");
+                }
+            
+        }
+        comprobarNie(nie);
+        comprobarDni(dni);
+    </script>
+</body>
+
+</html>
