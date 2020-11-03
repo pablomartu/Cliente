@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var bonoloto = [];
+        var cantidadNumeros = 6;
+       
+
+        while (bonoloto.length < cantidadNumeros) {
+            var numeroAleatorio = getRandomArbitrary(0, 50);
+            var existe = false;
+            for (var i = 0; i < bonoloto.length; i++) {
+                if (bonoloto[i] == numeroAleatorio) {
+                    existe = true;
+                    break;
+                }
+            }
+            if (!existe) {
+                bonoloto[bonoloto.length] = numeroAleatorio;
+            }
+
+        }
+
+        function getRandomArbitrary(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        document.write(bonoloto);
+    </script>
+</body>
+
+</html>
