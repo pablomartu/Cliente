@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="botón" id="crear">Abrir</button>
+    <button class="botón" id="cerrar">Cerrar</button>
+
+    <script>
+        var paginaCreada;
+        var url = "https://www.educa.jcyl.es/es";
+
+        document.getElementById("crear").addEventListener("click", crearVentana);
+        document.getElementById("cerrar").addEventListener("click", cerrarVentana);
+
+        function crearVentana() {
+            if (paginaCreada != null) {
+                alert("La pagina ya existe.");
+            }
+            if(paginaCreada == null){
+                paginaCreada = window.open(url);
+            }
+        }
+
+        function cerrarVentana() {
+            if (paginaCreada == null) {
+                alert("La pagina no existe.");
+            }
+            if(paginaCreada != null){
+                paginaCreada.close();
+                paginaCreada=null;
+            }
+        }
+    </script>
+</body>
+
+</html>

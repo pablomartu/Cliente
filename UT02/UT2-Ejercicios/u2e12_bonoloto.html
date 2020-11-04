@@ -9,30 +9,35 @@
 
 <body>
     <script>
-        var bonoloto = [];
-        var cantidadNumeros = 6;
-       
-
-        while (bonoloto.length < cantidadNumeros) {
-            var numeroAleatorio = getRandomArbitrary(0, 50);
-            var existe = false;
-            for (var i = 0; i < bonoloto.length; i++) {
-                if (bonoloto[i] == numeroAleatorio) {
-                    existe = true;
-                    break;
+        function bonoloto() {
+            var bonoloto = [];
+            var aleatorio = getRandomArbitrary(1, 9);
+            do {
+                var repeticion = 0;
+                //Crea y mete los numeros aleatorios de la bonoloto
+                for (let i = 0; i < 6; i++) {
+                    var numeroAleatorio = getRandomArbitrary(0, 50);
+                    bonoloto[i] = numeroAleatorio;
+                }
+                //Comprueba si hay repeticion
+                for (let i = 0; i < 6; i++) {
+                    for (let j = i + 1; j <= 5; j++) {
+                        if (bonoloto[i] == bonoloto[j]) {
+                            repeticion = 1;
+                        }
+                    }
                 }
             }
-            if (!existe) {
-                bonoloto[bonoloto.length] = numeroAleatorio;
-            }
-
+            while (repeticion);
+            bonoloto.push(aleatorio); //Añade el reintegro al final
+            document.write(bonoloto); //Imprimer la bonoloto
         }
-
+        
+        //Esta funcion pide un rango de numeros y te da un numero aleatorios entre ellos
         function getRandomArbitrary(min, max) {
             return Math.floor(Math.random() * (max - min) + min);
         }
-
-        document.write(bonoloto);
+        bonoloto();//Llamada a la funcion
     </script>
 </body>
 
