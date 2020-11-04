@@ -19,11 +19,11 @@
         document.getElementById("cerrar").addEventListener("click", cerrarVentana);
 
         function crearVentana() {
-            if (paginaCreada != null) {
+            if (paginaCreada != null || paginaCreada.closed) {
                 alert("La pagina ya existe.");
             }
             if(paginaCreada == null){
-                paginaCreada = window.open(url);
+                paginaCreada = window.open(url, "_blank");
             }
         }
 
