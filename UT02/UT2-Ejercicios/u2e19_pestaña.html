@@ -19,11 +19,10 @@
         document.getElementById("cerrar").addEventListener("click", cerrarVentana);
 
         function crearVentana() {
-            if (paginaCreada != null || paginaCreada.closed) {
-                alert("La pagina ya existe.");
-            }
-            if(paginaCreada == null){
+            if (paginaCreada == null || paginaCreada.closed) {
                 paginaCreada = window.open(url, "_blank");
+            } else {
+                alert("La pagina ya existe.");
             }
         }
 
@@ -31,9 +30,9 @@
             if (paginaCreada == null) {
                 alert("La pagina no existe.");
             }
-            if(paginaCreada != null){
+            if (paginaCreada != null) {
                 paginaCreada.close();
-                paginaCreada=null;
+                paginaCreada = null;
             }
         }
     </script>
