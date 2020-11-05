@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <iframe id="pruebaIframe" title="prueba" name="prueba" width="600" height="400"> </iframe>
+    <button class="botón" id="crear">Crear</button>
+    <script>
+        document.getElementById("crear").addEventListener("click", crearVentana);
+        var url = "https://www.educa.jcyl.es/es";
+
+        function crearVentana() {
+                paginaCreada = window.open(url, "prueba"); 
+        }
+
+    </script>
+</body>
+</html>
