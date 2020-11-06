@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var anno = getFullYear();
+        var dia = prompt("Dame el dia de tu cumpleaños");
+        var mes = prompt("Dame el mes de tu cumpleaños");
+       
+
+        function contarDiaSemana(fecha) {
+            var contador = 0 ;
+            var fecha = new fecha(anno, mes, dia);
+            for (let i = anno; i < 2100; i++) {
+                if(fecha.getDay()==0){
+                    contador++;
+                }  
+            }
+        }
+    </script>
+</body>
+</html>
