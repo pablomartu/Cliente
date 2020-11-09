@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="submit" name="crear" id="crear" value="Crear Ventana" />
+    <input type="submit" name="cerrar" id="cerrar" value="Cerrar Ventana" />
+    <input type="submit" name="activar" id="activar" value="Activar Ventana" />
+    <input type="submit" name="mover" id="mover" value="Mover Ventana" />
+    <input
+      type="submit"
+      name="izquierda"
+      id="izquierda"
+      value="Mover Ventana a la izquierda"
+    />
+    <input
+      type="submit"
+      name="derecha"
+      id="derecha"
+      value="Mover Ventana a la derecha"
+    />
+    <input
+      type="submit"
+      name="arriba"
+      id="arriba"
+      value="Mover Ventana arriba"
+    />
+    <input type="submit" name="abajo" id="abajo" value="Mover Ventana abajo" />
+    <input
+      type="submit"
+      name="escribir"
+      id="escribir"
+      value="Escribir en la Ventana"
+    />
+    <input
+      type="submit"
+      name="aumentar"
+      id="aumentar"
+      value="Aumentar tamaño Ventana"
+    />
+    <input
+      type="submit"
+      name="disminuir"
+      id="disminuir"
+      value="Disminuir tamaño Ventana"
+    />
+    <input
+      type="submit"
+      name="restaurar"
+      id="restaurar"
+      value="Restaurar tamaño Ventana"
+    />
+    <input type="submit" name="texto" id="texto" value="Texto Ventana" />
+    <input type="submit" name="bajar" id="bajar" value="Bajar scroll Ventana" />
+    <input type="submit" name="subir" id="subir" value="Subir scroll Ventana" />
+    <script>
+      ////////////////////Asignar funcionalidad a los botones/////////////////
+      document.getElementById("crear").addEventListener("click", crearVentana);
+      var x = "";
+
+      function crearVentana() {
+        if (x == "") {
+          x = window.open("", "Mi Ventana", "width=200,height=100");
+        } else {
+          alert("Error.La ventana no existe");
+          //Creo la variable porque sino pa los siguientes pasos como cerrar me cerraria la pestaña actual y no la qye creo con el boton crear
+        }
+      }
+      document
+        .getElementById("cerrar")
+        .addEventListener("click", cerrarVentana);
+
+      function cerrarVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.close();
+          x = "";
+        }
+      }
+      document.getElementById("activar").addEventListener("click", focoVentana);
+
+      function focoVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.focus();
+        }
+      }
+      document.getElementById("mover").addEventListener("click", moverVentana);
+
+      function moverVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.moveTo(100, 100);
+        }
+      }
+      document
+        .getElementById("izquierda")
+        .addEventListener("click", izquierdaVentana);
+
+      function izquierdaVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.moveBy(-10, 0);
+        }
+      }
+      document
+        .getElementById("derecha")
+        .addEventListener("click", derechaVentana);
+
+      function derechaVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.moveBy(10, 0);
+        }
+      }
+      document
+        .getElementById("arriba")
+        .addEventListener("click", arribaVentana);
+
+      function arribaVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.moveBy(0, -10);
+        }
+      }
+      document.getElementById("abajo").addEventListener("click", abajoVentana);
+
+      function abajoVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.moveBy(0, 10);
+        }
+      }
+      document
+        .getElementById("escribir")
+        .addEventListener("click", escribirVentana);
+
+      function escribirVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.document.write("Hola");
+        }
+      }
+      document
+        .getElementById("aumentar")
+        .addEventListener("click", aumentarVentana);
+
+      function aumentarVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.resizeBy(10, 10);
+        }
+      }
+      document
+        .getElementById("disminuir")
+        .addEventListener("click", disminuirVentana);
+
+      function disminuirVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.resizeBy(-10, -10);
+        }
+      }
+      document
+        .getElementById("restaurar")
+        .addEventListener("click", restaurarVentana);
+
+      function restaurarVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.resizeTo(100, 100);
+        }
+      }
+      document.getElementById("texto").addEventListener("click", textoVentana);
+
+      function textoVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.document.write("Hola" + "<br/>");
+        }
+      }
+      document.getElementById("bajar").addEventListener("click", bajarVentana);
+
+      function bajarVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.scrollBy(0, 100);
+        }
+      }
+
+      document.getElementById("subir").addEventListener("click", subirVentana);
+
+      function subirVentana() {
+        if (x == "") {
+          alert("Error.La ventana no existe");
+        } else {
+          x.scrollBy(0, -100);
+        }
+      }
+    </script>
+  </body>
+</html>
