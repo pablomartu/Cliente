@@ -1,26 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        var anno = getFullYear();
-        var dia = prompt("Dame el dia de tu cumpleaños");
-        var mes = prompt("Dame el mes de tu cumpleaños");
-       
+        function contarDiaSemana() {
+            var anno = new Date().getFullYear();
+            var dia = prompt("Dame el dia de tu cumpleaños");
+            var mes = prompt("Dame el mes de tu cumpleaños");
 
-        function contarDiaSemana(fecha) {
-            var contador = 0 ;
-            var fecha = new fecha(anno, mes, dia);
-            for (let i = anno; i < 2100; i++) {
-                if(fecha.getDay()==0){
-                    contador++;
-                }  
+            if (mes > 1) {
+                mes = mes - 1;
             }
+
+            var fechaActual = new Date().getTime(); //Tiempo en milisegundos
+            var fechaInicialTiempo = new Date(anno, mes, dia).getTime(); //Tiempo den milisegundos de fechaInicial
+            var cumplePasado = false;
+
+            if (fechaActual > fechaInicialTiempo) {
+                cumplePasado = true;
+            }
+            var contador = 0;
+            for (let i = anno; i < 2100; i++) {
+                var fecha = new Date(i, mes, dia); //Fecha de cumpleaños del anno en el que estamos
+                if (fecha.getDay() == 0) {
+                    contador++;
+                }
+            }
+            if (cumplePasado == true && contador != 0) {
+                contador = contador - 1;
+            }
+
+            if (cumplePasado == false) {
+                var milisegundos = Math.abs((fechaActual - fechaInicialTiempo));
+                var dias = Math.abs(Math.floor(milisegundos / (1000 * 60 * 60 * 24)));
+                document.write("El numero de milisegundos que quedan para tu cumpleaños es de: " + milisegundos + " y el de dias es: " + dias );
+            } else {
+                fechaInicialTiempo = new Date(anno + 1, mes, dia).getTime();
+                var milisegundos = Math.abs((fechaActual - fechaInicialTiempo));
+                var dias = Math.abs(Math.floor(milisegundos / (1000 * 60 * 60 * 24)));
+                document.write("El numero de milisegundos que quedan para tu cumpleaños es de: " + milisegundos + " y el de dias es: " + dias );
+            }
+            document.write("<br>Tu cumpleaños va a caer en domingo este numero de años: " + contador);
         }
+
+        contarDiaSemana();
     </script>
 </body>
+
 </html>
