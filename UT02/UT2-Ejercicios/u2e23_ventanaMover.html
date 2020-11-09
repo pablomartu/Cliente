@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var i;
+        var miventana;
+
+        function crearVentana() {
+            miventana = window.open("", "miventana", "width=300,height=200");
+            miventana.focus();
+            i = setTimeout(cerrar, 60000);
+        }
+
+        function tiempo() {
+            i = setInterval(mover, 1000);
+            miventana.focus();
+        }
+
+        function mover() {
+            crearVentana();
+            var x = miventana.screenX;
+            var y = miventana.screenY;
+            miventana.moveTo(Math.random() * screen.width, Math.random() * screen.height);
+            miventana.document.body.innerHTML = x + ", " + y;
+        }
+
+        function cerrar() {
+            clearTimeout(i);
+            miventana.close();
+        }
+
+        crearVentana();
+        tiempo();
+    </script>
+</body>
+</html>
