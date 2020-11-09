@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var opcion = prompt("Dame una opcion de impresion del 1 a 2 para una hora");
+        switch (opcion) {
+
+            case '1':
+
+                function horasConCero() {
+                    var hora = fecha.getHours();
+                    var minutos = fecha.getMinutes();
+                    var segundos = fecha.getSeconds();
+
+                    if (hora < 10) {
+                        hora = '0' + hora
+                    }
+                    if (minutos < 10) {
+                        minutos = '0' + minutos
+                    }
+                    if (segundos < 10) {
+                        segundos = '0' + segundos
+                    }
+                    document.write(hora + ":" + minutos + ":" + segundos);
+                }
+                horasConCero();
+                break;
+
+            case '2':
+
+                function tConvert(tiempo) {
+                    tiempo = tiempo.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [tiempo];
+
+                    if (tiempo.length > 1) { 
+                        tiempo = tiempo.slice(1); 
+                        tiempo[5] = +tiempo[0] < 12 ? 'AM' : 'PM'; 
+                        tiempo[0] = +tiempo[0] % 12 || 12;
+                    }
+                    return tiempo.join(''); 
+                }
+                tConvert('18:00:00');
+                break;
+        }
+    </script>
+    
+</body>
+</html>
