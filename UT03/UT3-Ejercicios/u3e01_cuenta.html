@@ -11,8 +11,9 @@
     <button onclick="ingresar()">Ingresar</button>
     <button onclick="extraer()">Extraer</button>
     <button onclick="informar()">Informar</button>
+    <p id="texto"></p>
     <script>
-        var operaciones=" ";
+        var operaciones = " ";
         var cuenta = {
             titular: "Alex",
             saldo: 0
@@ -23,21 +24,22 @@
 
         function ingresar() {
             var cantidad = prompt("Dame una cantidad para añadir a la cuenta");
-            cuenta.saldo =+ cantidad;
-            operaciones =+ document.write("<br> La cantidad mostarda ha sido de: " + cantidad);
-            operaciones.innerHTML;
+            cuenta.saldo = parseInt(cuenta.saldo, 10) + parseInt(cantidad, 10);
+            operaciones += "<br> La cantidad mostarda ha sido de: " + cantidad;
+            document.getElementById("texto").innerHTML = operaciones;
+
         }
 
         function extraer() {
             var cantidad = prompt("Dame una cantidad para extraerde la cuenta");
-            cuenta.saldo = cuenta.saldo - cantidad;
-            operaciones =+ document.write("<br> La cantidad extraida ha sido de: " + cantidad)
-            document.write(operaciones)
+            cuenta.saldo = parseInt(cuenta.saldo, 10) - parseInt(cantidad, 10);;
+            operaciones += "<br> La cantidad extraida ha sido de: " + cantidad;
+            document.getElementById("texto").innerHTML = operaciones;
         }
 
         function informar() {
-            document.write("La cuenta de: " + cuenta.titular + " tiene el saldo actual de: " + cuenta.saldo);
-            document.write(operaciones);
+            operaciones += "<br> La cuenta de: " + cuenta.titular + " tiene el saldo actual de: " + cuenta.saldo;
+            document.getElementById("texto").innerHTML = operaciones;
         }
     </script>
 </body>
