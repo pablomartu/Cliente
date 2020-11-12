@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var clientes = [   cliente ={ cliente: "Laura", localidad: "Santander", cuota: 50 }, 
+                            cliente ={ cliente: "Álvaro", localidad: "Castro", cuota: 50 },
+                            cliente ={ cliente: "Igor", localidad: "Castro", cuota: 60 },
+                            cliente ={ cliente: "Ivan", localidad: "Santander", cuota: 40 },
+                            cliente ={ cliente: "Mónica", localidad: "Zamora", cuota: 30 },
+                            cliente ={ cliente: "Javi", localidad: "Bilbao", cuota: 30 },
+                            cliente ={ cliente: "David", localidad: "Bilbao", cuota: 50 },
+                            cliente ={ cliente: "José Luis", localidad: "Bilbao", cuota: 60 },         
+         ];
+
+         var mensaje = prompt(
+        "1. Todos: se mostrará una tabla con los valores que están en la variable anterior." +
+          "\n" +
+          "2. Clientes de una localidad: se pedirá una localidad al usuario y se mostrarán en una tabla los nombres y cuotas de las personas que viven en esa localidad." +
+          "\n" +
+          "3. Clientes que tengan una cuota mayor que un valor pedido al usuario: se pedirá la cuota y se mostrarán en una tabla los nombres de clientes, localidad y cuotas de aquellos que tienen una cuota superior al valor introducido por el usuario."
+      );
+
+      function imprimirTabla() {
+        document.write(
+          "<table border='1'>" +
+            "<th>Cliente</th>" +
+            "<th>Localidad</th>" +
+            "<th>Cuotas</th>"
+        );
+        for (let i = 0; i < clientes.length; i++) {
+          var datos = Object.values(clientes[i]);
+          document.write("<tr>");
+          for (let j = 0; j < datos.length; j++) {
+            document.write(
+              "<td>" + datos[j] + "</td>"
+            );
+          }
+          document.write("</tr>");
+        }
+        document.write("</table>");
+      }
+
+      if (mensaje == 1) {
+        imprimirTabla();
+      }
+
+      if (mensaje == 2) {
+        var respuesta = prompt("Dame una localidad");
+        document.write(
+          "<table border='1'>" + "<th>Cliente</th>" + "<th>Cuotas</th>"
+        );
+        for (let i = 0; i < clientes.length; i++) {
+          var datos = Object.values(clientes[i]);;
+          if (respuesta == datos[1]) {
+            document.write("<tr>");
+            for (let j = 0; j < datos.length; j++) {
+              if (j != 1) {
+                document.write(
+                  "<td>" + datos[j] + "</td>"
+                );
+              }
+            }
+            document.write("</tr>");
+          }
+        }
+        document.write("</table>");
+      }
+
+      if (mensaje == 3) {
+        var respuesta2 = prompt("Dame una cuota");
+        document.write(
+          "<table border='1'>" +
+            "<th>Cliente</th>" +
+            "<th>Localidad</th>" +
+            "<th>Cuotas</th>"
+        );
+        for (let i = 0; i < clientes.length; i++) {
+          var datos = Object.values(clientes[i]);
+          if (respuesta2 < datos[2]) {
+            document.write("<tr>");
+            for (let j = 0; j < datos.length; j++) {
+              document.write(
+                "<td>" + datos[j] + "</td>"
+              );
+            }
+            document.write("</tr>");
+          }
+        }
+        document.write("</table>");
+      }
+    </script>
+</body>
+</html>
