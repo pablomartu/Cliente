@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Disco {
+            constructor(nombre, grupOcant, year, tipMus, localizacion) {
+                this.nombre = nombre;
+                this.grupOcant = grupOcant;
+                this.year = year;
+                this.tipMus = tipMus;
+                this.localizacion = localizacion;
+                this.prestado = false;
+            }
+            // constructor(){
+            //     this.nombre="";
+            //     this.grupo="";
+            //     this.anyo="";
+            //     this.genero="";
+            //     this.localizacion=0;
+            //     this.prestado=false;
+            // }
+
+            cambEstant() {
+                var num = prompt("Dame el numero nuevo de estanteria");
+                this.localizacion = num;
+            }
+
+            prestar() {
+                if (this.prestado == true) {
+                    alert("El dico ya ha sido prestado");
+                } else {
+                    this.prestado = true;
+                }
+            }
+
+            devolver() {
+                if (this.prestado == false) {
+                    alert("El dico ya ha sido devuelto");
+                } else {
+                    this.prestado = false;
+                }
+            }
+
+            mostrarInfo() {
+                alert("Nombre del disco: " + this.nombre + "\n" +
+                    "Nombre del Grupo o Artista: " + this.grupOcant + "\n" +
+                    "Año: " + this.year + "\n" +
+                    "Tipo de Música: " + this.tipMus + "\n" +
+                    "Localizacion: " + this.localizacion + "\n" +
+                    "Prestado: " + this.prestado
+                );
+            }
+        }
+
+        let nombre = prompt("Dame el nombre del disco");
+        let grupOcant = prompt("Dame el nombre de creador");
+        let year = prompt("Dame el año en el que se creo");
+
+        let localizacion = prompt("Dame la localizacion");
+
+        do {
+            var tipMus = prompt("¿Que tipo de música es?");
+            var estilos = ["rock", "pop", "punk", "indie"];
+            var correcto = false;
+            for (let i = 0; i < estilos.length; i++) {
+                if (tipMus == estilos[i]) {
+                    correcto = true;
+                    break;
+                }
+            }
+            if (correcto == false) {
+                alert("El estilo de musica tiene que ser: rock, pop, punk, indie");
+            }
+        } while (correcto == false);
+
+        let disco1 = new Disco(nombre, grupOcant, year, tipMus, localizacion);
+
+        do {
+            var opcion = prompt("1.- Mostrar la información del disco que se ha añadido." + "\n" +
+                "2.- Cambiar el disco de estanteríao" + "\n" +
+                "3.- Prestar un disco" + "\n" +
+                "4.- Devolver un disco" + "\n" +
+                "5.- Terminar");
+            switch (opcion) {
+                case "1":
+                    disco1.mostrarInfo();
+                    break;
+
+                case "2":
+                    disco1.cambEstant();
+                    break;
+
+                case "3":
+                    disco1.prestar();
+                    break;
+
+                case "4":
+                    disco1.devolver();
+                    break;
+            }
+        } while (opcion >= 1 && opcion <= 4);
+    </script>
+</body>
+
+</html>
