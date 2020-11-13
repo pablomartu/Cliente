@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Vector {
+            constructor(x, y){
+                this.x = x;
+                this.y = y;
+            }
+
+            get darX(){
+                return this.x;
+            }
+
+            get darY(){
+                return this.y;
+            }
+
+            set cambiarX(x){
+                this.x = x;
+            }
+
+            set cambiarY(y){
+                this.y = y;
+            }
+
+            static sumar(Vector){
+                return new Vector(this.x+v.x,this.y+v.y);
+                
+            }
+
+            static restar(Vector){
+                return new Vector(this.x-v.x,this.y-v.y);
+            }
+
+        }
+    </script>
+</body>
+</html>
