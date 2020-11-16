@@ -9,36 +9,45 @@
     <script>
         class Vector {
             constructor(x, y){
+                this._x = x;
+                this._y = y;
+                this.longitud = Vector.longitud(x , y);
+            }
+
+            get X(){
+                return this._x;
+            }
+
+            get Y(){
+                return this._y;
+            }
+
+            set X(x){
                 this.x = x;
+            }
+
+            set Y(y){
                 this.y = y;
             }
 
-            get darX(){
-                return this.x;
+            sumar(vector){
+                return new Vector(this._x + vector._x, this._y + vector._y); 
             }
 
-            get darY(){
-                return this.y;
+            restar(vector){
+                return new Vector(this._x - vector._x, this._y - vector._y);
             }
 
-            set cambiarX(x){
-                this.x = x;
-            }
-
-            set cambiarY(y){
-                this.y = y;
-            }
-
-            static sumar(Vector){
-                return new Vector(this.x+v.x,this.y+v.y);
-                
-            }
-
-            static restar(Vector){
-                return new Vector(this.x-v.x,this.y-v.y);
+            static longitud(x, y){
+                return Math.sqrt(Math.exp(x, 2) + Math.exp(y, 2));
             }
 
         }
+     
+     console.log(new Vector(1, 2).restar(new Vector(2, 3)));
+     console.log(new Vector(1, 2).sumar(new Vector(2, 3)));
+     
+     
     </script>
 </body>
 </html>
