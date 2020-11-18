@@ -28,9 +28,12 @@
         }
 
         class Coche extends Vehiculo {
-            constructor(){
-                super();
-                this.velMax = 120;
+            // constructor(){
+            //      super();
+            //      this.velMax = 120;
+            // }
+            constructor(marca, modelo, color){
+                super(marca, modelo, color, 120);
             }
             parar(){
                 alert("Aparcar");
