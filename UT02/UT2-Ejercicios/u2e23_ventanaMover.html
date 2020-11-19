@@ -19,12 +19,11 @@
         }
 
         function tiempo() {
-            i = setInterval(mover, 1000);
+            a = setInterval(mover, 1000);
             miventana.focus();
         }
 
         function mover() {
-            crearVentana();
             var x = miventana.screenX;
             var y = miventana.screenY;
             miventana.moveTo(Math.random() * screen.width, Math.random() * screen.height);

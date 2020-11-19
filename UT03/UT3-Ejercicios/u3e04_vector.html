@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Vector {
+            constructor(x, y){
+                this._x = x;
+                this._y = y;
+                this.longitud = Vector.longitud(x , y);
+            }
+
+            get X(){
+                return this._x;
+            }
+
+            get Y(){
+                return this._y;
+            }
+
+            set X(x){
+                this.x = x;
+            }
+
+            set Y(y){
+                this.y = y;
+            }
+
+            sumar(vector){
+                return new Vector(this._x + vector._x, this._y + vector._y); 
+            }
+
+            restar(vector){
+                return new Vector(this._x - vector._x, this._y - vector._y);
+            }
+
+            static longitud(x, y){
+                return Math.sqrt(Math.exp(x, 2) + Math.exp(y, 2));
+            }
+
+        }
+     
+     console.log(new Vector(1, 2).restar(new Vector(2, 3)));
+     console.log(new Vector(1, 2).sumar(new Vector(2, 3)));
+     
+     
+    </script>
+</body>
+</html>

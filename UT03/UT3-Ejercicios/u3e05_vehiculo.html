@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Vehiculo {
+            constructor(color, marca, modelo, velMax){
+                this.color = color;
+                this.marca = marca;
+                this.modelo = modelo;
+                this.velMax = velMax;
+            }
+            comenzar(){
+                alert("Encender motor");
+            }
+
+            parar(){
+                alert("Apagar motor");
+            }
+
+            distanciaMax(tiempo){
+                alert(this.velMax * tiempo);
+            }
+        }
+
+        class Coche extends Vehiculo {
+            // constructor(){
+            //      super();
+            //      this.velMax = 120;
+            // }
+            constructor(marca, modelo, color){
+                super(marca, modelo, color, 120);
+            }
+            parar(){
+                alert("Aparcar");
+            }
+        }
+
+        class Avion extends Vehiculo {
+            constructor(){
+                super();
+                this.velMax = 1000;
+            }
+            comenzar(){
+                alert("Despegar");
+            }
+
+            parar(){
+                alert("Aterrizar");
+            }
+        }
+
+        // let vehiculo1 = new Vehiculo ("amarillo", "yondere", "X345", 50);
+        //     vehiculo1.comenzar();
+        //     vehiculo1.parar();
+        //     vehiculo1.distanciaMax(60);
+        let vehiculo2 = new Coche ("rojo", "merecedes", "c180");
+            vehiculo2.comenzar();
+            vehiculo2.parar();
+            vehiculo2.distanciaMax(60);
+        // let vehiculo3 = new Avion ("blanco", "falcon", "R56");
+        //     vehiculo3.comenzar();
+        //     vehiculo3.parar();
+        //     vehiculo3.distanciaMax(60);
+
+    </script>
+</body>
+</html>
