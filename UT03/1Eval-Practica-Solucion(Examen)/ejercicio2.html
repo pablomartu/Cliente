@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1ª Evaluación - Ejercicio 2</title>
+</head>
+
+<body>
+    <h3 id="resultado"></h3>
+    <script>
+        //Invocamos a la función para que el resultado cargue al instante       
+        mostrarFalta();
+        //Invocamos a la función para que se actualice cada segundo
+        setInterval(mostrarFalta, 1000);
+
+        function mostrarFalta() {
+            //Establecemos las fechas actualel y de las vacaciones de Navidad
+            let fecAhora = new Date();
+            let fecNavidad = new Date(2020, 11, 22, 14, 20);
+            //Calculamos los segundos que faltan
+            let segundosFaltan = Math.floor((fecNavidad.getTime() - fecAhora.getTime()) / 1000);
+            //Calculamos los días que faltan
+            let diasFaltan = Math.floor(segundosFaltan / 60 / 60 / 24);
+            //Quitamos los días a los segundos que faltan
+            segundosFaltan -= diasFaltan * 24 * 60 * 60;
+            //Calculamos las horas que faltan
+            let horasFaltan = Math.floor(segundosFaltan / 60 / 60);
+            //Quitamos las horas a los segundos que faltan
+            segundosFaltan -= horasFaltan * 60 * 60;
+            //Calculamos los minutos que faltan
+            let minutosFaltan = Math.floor(segundosFaltan / 60);
+            //Quitamos los minutos a los segundos que faltan
+            segundosFaltan -= minutosFaltan * 60;
+            //Construimos la salida
+            document.getElementById("resultado").innerHTML = "Faltan " + diasFaltan + " dias, " +
+                horasFaltan + " horas, " +
+                minutosFaltan + " minutos y " +
+                segundosFaltan + " segundos para las vacaciones de Navidad ;)";
+        }
+    </script>
+
+</body>
+
+</html>

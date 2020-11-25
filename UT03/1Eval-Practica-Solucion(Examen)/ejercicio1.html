@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1ª Evaluación - Ejercicio 1</title>
+</head>
+
+<body>
+    <h1>1ª Evaluación - Ejercicio 1</h1>
+    <h3>Para ver resultados, abre la consola (F12)</h3>
+    <script>
+        //Solución con el array "arguments"
+        // function suma() {
+        //     let tot = 0;
+        //     let val = 0;
+        //     for (let i = 0; i < arguments.length; ++i) {
+        //         if (isNaN(parseFloat(arguments[i]))) {
+        //             val = 0;
+        //         } else {
+        //             val = parseFloat(arguments[i]);
+        //         }
+        //         tot += val;
+        //     }
+        //     return tot;
+        // }
+        //Solución con el operador REST ...
+        function suma(...param) {
+            let tot = 0;
+            let val = 0;
+            for (let i = 0; i < param.length; i++) {
+                if (isNaN(parseFloat(param[i]))) {
+                    val = 0;
+                } else {
+                    val = parseFloat(param[i]);
+                }
+                tot += val;
+            }
+            return tot;
+        }
+        console.log(suma());
+        console.log(suma("Cristina", [1,2,3]));
+        console.log(suma(3, 5, "Cristina", "5.36", [1,2,3]));
+    </script>
+
+</body>
+
+</html>
