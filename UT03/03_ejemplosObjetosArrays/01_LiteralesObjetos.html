@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Objetos. Propiedades</title>
+</head>
+
+<body>
+	<script>
+		//CREAR UN LITERAL DE OBJETOS
+		//1. Definir y crear un objeto simple utilizando un literal.
+		let persona1 = {
+			nombre: "Ada",
+			apellido: "Lovelace",
+			nacimiento: 1815
+		};
+
+		//2. Definir y crear un objeto simple utilizando el constructor --NO RECOMENDADO
+		let persona2 = new Object();
+		persona2.nombre = "Charles";
+		persona2.apellido = "Babbage";
+		persona2.nacimiento = 1791;
+
+		//PROPIEDADES 
+		/* Sintaxis de acceso a las propiedades de un objeto:
+		- objeto.propiedad;
+		- objeto["propiedad"]
+		- objeto[expresion] */
+
+		document.write("<strong>Acceso a las propiedades de un objeto una a una: </strong>");
+		document.write("<br>" + persona1.nombre);
+		document.write("<br>" + persona1["apellido"]);
+		let expresion = "nacimiento";
+		document.write("<br>" + persona1[expresion]);
+
+		/* Recorrer las propiedades de un objeto:
+		for (<nombre_variable> in <nombre_objeto>){
+			<nombre_objeto>[<nombre_variable>];
+		} */
+		document.write("<br><strong>Recorrer las propiedades de un objeto con for..in: </strong>");
+		for (x in persona1) {
+			document.write("<br>" + (persona1[x]));
+		}
+		/* ES6+ Recorrer las propiedades de un objeto: obtener un array con las propiedades
+		Object.keys(<objeto>); */
+		document.write("<br><strong>Obtener un array con las propiedades: </strong>" + Object.keys(persona1));
+		console.log(Object.keys(persona1));
+		/* ES6+ Recorrer las propiedades de un objeto: obtener un array con los valores
+		Object.values(<objeto>); */
+		document.write("<br><strong>Obtener un array con los valores: </strong>" + Object.values(persona1));
+		console.log(Object.values(persona1));
+		/* ES6+ Recorrer las propiedades de un objeto: obtener un array con los pares propiedad-valor 
+		Object.entries(<objeto>); */
+		document.write("<br><strong>Obtener un array con los pares propiedad-valor: </strong>" + Object.entries(persona1));
+		console.log(Object.entries(persona1));
+
+		/* Añadir una nueva propiedad a un objeto:
+		<nombre_objeto>.<nueva_propiedad> = <valor_propiedad>; */
+		document.write("<br><strong>Añadimos una propiedad al objeto persona 1: </strong>");
+		persona1.nacionalidad =
+			"Inglaterra";
+		document.write("<br>" + persona1.nacionalidad);
+
+		/* Borrar una propiedad de un objeto:
+		delete <nombre_objeto>.<nombre_propiedad>; */
+		document.write("<br><strong>Eliminamos una propiedad al objeto persona 1: </strong>");
+		delete persona1.nacimiento;
+		for (x in persona1) {
+			document.write("<br>" + persona1[x]);
+		}
+
+		/* Comprobar las propiedades de un objeto
+		<propiedad> in <nombre_objeto>; */
+		document.write("<br>¿Tiene la propiedad nombre?: " + ("nombre" in persona1));
+		document.write("<br>¿Tiene la propiedad nacimiento?: " + ("nacimiento" in persona1));
+
+		//OBJETOS ANIDADOS
+		let pelicula = {
+			titulo: 'E.T.',
+			director: {
+				nombre: 'Steven',
+				apellido: 'Spielberg'
+			}
+		};
+		document.write("<br><strong>Objetos anidados: </strong>");
+		document.write("<br>" + pelicula.titulo);
+		document.write("<br>" + pelicula.director.nombre);
+		document.write("<br>" + pelicula['director']['nombre']);
+		document.write("<br>" + pelicula['director'].apellido);
+		document.write("<br>" + pelicula.director);
+		console.log(pelicula.director);
+	</script>
+</body>
+
+</html>
