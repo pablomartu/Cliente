@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>u4e04_parejas</title>
+    <style>
+        #b {
+            background-image: url("./img/8.jpg");
+        }
+        
+        table {
+            margin: auto;
+            background: white;
+            border: solid red 2px;
+        }
+        
+        h1 {
+            color: red;
+            text-align: center;
+            border-radius: 20px;
+        }
+        
+        h2 {
+            color: green;
+            text-align: center;
+            background: black;
+            border-radius: 20px;
+        }
+        
+        tr td {
+            height: 80px;
+            width: 80px;
+            border: solid black 2px;
+        }
+    </style>
+</head>
+
+<body id="b">
+    <h1>Juego de recordar las parejas de los Simpson</h1>
+    <table>
+        <tr>
+            <td><img id='imagen1' class="0" src="imagenes/0.jpg" width="100px" height="100px" /></td>
+            <td><img id='imagen2' class="3" src="imagenes/3.jpg" width="100px" height="100px" /></td>
+            <td><img id='imagen3' class="2" src="imagenes/2.jpg" width="100px" height="100px" /></td>
+            <td><img id='imagen4' class="4" src="imagenes/4.jpg" width="100px" height="100px" /></td>
+        </tr>
+        <tr>
+            <td><img id='imagen5' class="1" src="imagenes/1.jpg" width="100px" height="100px" /></td>
+            <td><img id='imagen6' class="3" src="imagenes/3.jpg" width="100px" height="100px" /></td>
+            <td><img id='imagen7' class="2" src="imagenes/2.jpg" width="100px" height="100px" /></td>
+            <td><img id='imagen8' class="5" src="imagenes/5.jpg" width="100px" height="100px" /></td>
+        </tr>
+        <tr>
+            <td><img id='imagen9' class="0" src="imagenes/0.jpg" width="100px" height="100px" /></td>
+            <td><img id='imagen10' class="5" src="imagenes/5.jpg" width="100px" height="100px" /></td>
+            <td><img id='imagen11' class="4" src="imagenes/4.jpg" width="100px" height="100px" /></td>
+            <td><img id='imagen12' class="1" src="imagenes/1.jpg" width="100px" height="100px" /></td>
+        </tr>
+        <div>
+            <h2 id="puntuacion"></h2>
+        </div>
+    </table>
+    <script>
+        document.addEventListener("DOMContentLoaded", ocultarImagenes);
+        var puntuacion = 0;
+        var hasPinchado = false;
+        var primeraVez = null;
+        var segundaVez = null;
+
+        var celdas = document.querySelectorAll("td");
+        for (let i = 0; i < celdas.length; i++) {
+            celdas[i].addEventListener("click", mostrarImagenes);
+        }
+
+        function ocultarImagenes() {
+            var imagenes = document.querySelectorAll("img");
+            for (let i = 0; i < imagenes.length; i++) {
+                imagenes[i].style.opacity = 0;
+            }
+        }
+
+        function mostrarImagenes(e) {
+            e.target.style.opacity = 1;
+            comprobarClick(e.target);
+
+        }
+
+        function comprobarClick(elemento) {
+            if (!hasPinchado) {
+                hasPinchado = true;
+                primeraVez = elemento; //Te pone la imagen sobre la que has pinchado visible
+            } else {
+                hasPinchado = false;
+                segundaVez = elemento;
+                comprobarImagenes();
+            }
+        }
+
+
+
+        function comprobarImagenes() {
+            if (primeraVez.className === segundaVez.className) {
+                primeraVez.parentElement.style.background = "green";
+                segundaVez.parentElement.style.background = "green";
+                puntuacion++;
+                document.getElementById("puntuacion").innerHTML = ("Tu puntuacion es: " + puntuacion);
+                primeraVez.parentElement.removeEventListener("click", mostrarImagenes);
+                segundaVez.parentElement.removeEventListener("click", mostrarImagenes);
+                vaciarIntentos();
+            } else {
+                primeraVez.parentElement.style.background = "red";
+                segundaVez.parentElement.style.background = "red";
+                setTimeout(function() {
+                    primeraVez.style.opacity = 0;
+                    segundaVez.style.opacity = 0;
+                    primeraVez.parentElement.style.background = "white";
+                    segundaVez.parentElement.style.background = "white";
+                    vaciarIntentos();
+                }, 500);
+            }
+        }
+
+        function vaciarIntentos() {
+            primeraVez = null;
+            segundaVez = null;
+        }
+    </script>
+</body>
+
+</html>
