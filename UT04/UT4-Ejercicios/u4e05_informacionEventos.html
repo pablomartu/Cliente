@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UT04 - Ejercicio 5 - Eventos teclado y ratón</title>
-    <script src="u4e05_informacionEventos.js"></script>
+    <!-- <script src="u4e05_informacionEventos.js"></script> -->
 
     <style type="text/css">
         body {
@@ -13,8 +13,8 @@
         }
 
         .box {
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 180px;
             border: thin solid silver;
             padding: .5em;
             float: left;
@@ -49,7 +49,7 @@
                     var coordenadaXp= evento.pageX;
                     var coordenadaYp= evento.pageY;
 
-                    muestraInformacion("datosRaton",["Raton","Navegador: " + " " 
+                    muestraInformacion("datosRaton",["Navegador: " + " " 
                             + [coordenadaXn + " " +coordenadaYn], "Pagina: " + " " + [coordenadaXp + " " +coordenadaYp]]);
                     break;
                 case 'keypress':
@@ -57,7 +57,7 @@
                     var codigo = evento.charCode || evento.keyCode;
                     var caracter = String.fromCharCode(codigo);
 
-                    muestraInformacion("datosTeclado",["Teclado", "Caracter:"+ " "+ [caracter], "Codigo: " + " " + [codigo]]);
+                    muestraInformacion("datosTeclado",["Caracter:"+ " "+ [caracter], "Codigo: " + " " + [codigo]]);
                     break;
             }
 
