@@ -36,6 +36,43 @@
         <h1>Teclado</h1>
         <div id="datosTeclado"></div>
     </div>
+    <script>
+        function Informacion(elEvento) {
+            var evento = elEvento || window.event;
+          
+            switch (evento.type) {
+                case 'mousemove':
+                    document.getElementById('raton').style.backgroundColor = 'Yellow';
+                    var coordenadaXn= window.event.screenX;
+                    var coordenadaYn= window.event.screenY;
+
+                    var coordenadaXp= evento.pageX;
+                    var coordenadaYp= evento.pageY;
+
+                    muestraInformacion("datosRaton",["Raton","Navegador: " + " " 
+                            + [coordenadaXn + " " +coordenadaYn], "Pagina: " + " " + [coordenadaXp + " " +coordenadaYp]]);
+                    break;
+                case 'keypress':
+                document.getElementById('teclado').style.backgroundColor = 'Blue';
+                    var codigo = evento.charCode || evento.keyCode;
+                    var caracter = String.fromCharCode(codigo);
+
+                    muestraInformacion("datosTeclado",["Teclado", "Caracter:"+ " "+ [caracter], "Codigo: " + " " + [codigo]]);
+                    break;
+            }
+
+        }
+
+        function muestraInformacion(id,mensaje) {
+            document.getElementById(id).innerHTML = '<h1>' + mensaje[0] + '</h1>';
+            for (var i = 1; i < mensaje.length; i++) {
+                document.getElementById(id).innerHTML += '<p>' + mensaje[i] + '</p>';
+            }
+        }
+
+        document.onmousemove=Informacion;
+        document.onkeypress=Informacion;
+    </script>
 </body>
 
 </html>
