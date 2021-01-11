@@ -42,7 +42,7 @@
           
             switch (evento.type) {
                 case 'mousemove':
-                    document.getElementById('raton').style.backgroundColor = 'Yellow';
+                    document.getElementById('raton').style.backgroundColor = '#FFFFCC';
                     var coordenadaXn= window.event.screenX;
                     var coordenadaYn= window.event.screenY;
 
@@ -53,7 +53,7 @@
                             + [coordenadaXn + " " +coordenadaYn], "Pagina: " + " " + [coordenadaXp + " " +coordenadaYp]]);
                     break;
                 case 'keypress':
-                document.getElementById('teclado').style.backgroundColor = 'Blue';
+                document.getElementById('teclado').style.backgroundColor = '#CCE6FF';
                     var codigo = evento.charCode || evento.keyCode;
                     var caracter = String.fromCharCode(codigo);
 
