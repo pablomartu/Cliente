@@ -9,60 +9,103 @@
         #b {
             background-image: url("./img/8.jpg");
         }
-        
+
         table {
             margin: auto;
             background: white;
-            border: solid red 2px;
+            border: solid blue 2px;
         }
-        
+
         h1 {
-            color: red;
+            color: blue;
             text-align: center;
             border-radius: 20px;
         }
-        
+
+        #ganar {
+            color: green;
+            text-align: center;
+            background: black;
+            border-radius: 20px;
+        }
+
+        #reinicio {
+            height: 100px;
+            width: 100px;
+            margin: 10px ;
+            position: relative;
+            top: 50%;
+            left: 45%;
+        }
+
         h2 {
             color: green;
             text-align: center;
             background: black;
             border-radius: 20px;
         }
-        
+
         tr td {
             height: 80px;
             width: 80px;
             border: solid black 2px;
         }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
     </style>
 </head>
 
 <body id="b">
-    <h1>Juego de recordar las parejas de los Simpson</h1>
-    <table>
-        <tr>
-            <td><img id='imagen1' class="0" src="imagenes/0.jpg" width="100px" height="100px" /></td>
-            <td><img id='imagen2' class="3" src="imagenes/3.jpg" width="100px" height="100px" /></td>
-            <td><img id='imagen3' class="2" src="imagenes/2.jpg" width="100px" height="100px" /></td>
-            <td><img id='imagen4' class="4" src="imagenes/4.jpg" width="100px" height="100px" /></td>
-        </tr>
-        <tr>
-            <td><img id='imagen5' class="1" src="imagenes/1.jpg" width="100px" height="100px" /></td>
-            <td><img id='imagen6' class="3" src="imagenes/3.jpg" width="100px" height="100px" /></td>
-            <td><img id='imagen7' class="2" src="imagenes/2.jpg" width="100px" height="100px" /></td>
-            <td><img id='imagen8' class="5" src="imagenes/5.jpg" width="100px" height="100px" /></td>
-        </tr>
-        <tr>
-            <td><img id='imagen9' class="0" src="imagenes/0.jpg" width="100px" height="100px" /></td>
-            <td><img id='imagen10' class="5" src="imagenes/5.jpg" width="100px" height="100px" /></td>
-            <td><img id='imagen11' class="4" src="imagenes/4.jpg" width="100px" height="100px" /></td>
-            <td><img id='imagen12' class="1" src="imagenes/1.jpg" width="100px" height="100px" /></td>
-        </tr>
-        <div>
-            <h2 id="puntuacion"></h2>
-        </div>
-    </table>
+    <h1> JUEGO DE PAREJAS</h1>
     <script>
+        let arrayImg = ["<img id='imagen1' class='0' src='imagenes/0.jpg' +'/>",
+            "<img id='imagen2' class='3' src='imagenes/3.jpg'>",
+            "<img id='imagen3' class='2' src='imagenes/2.jpg'>",
+            "<img id='imagen4' class='4' src='imagenes/4.jpg' >",
+            "<img id='imagen5' class='1' src='imagenes/1.jpg' >",
+            "<img id='imagen6' class='3' src='imagenes/3.jpg' >",
+            "<img id='imagen7' class='2' src='imagenes/2.jpg' >",
+            "<img id='imagen8' class='5' src='imagenes/5.jpg' >",
+            "<img id='imagen9' class='0' src='imagenes/0.jpg' >",
+            "<img id='imagen10' class='5' src='imagenes/5.jpg' >",
+            "<img id='imagen11' class='4' src='imagenes/4.jpg' >",
+            "<img id='imagen12' class='1' src='imagenes/1.jpg' >"
+        ];
+
+        function crearTablaAleatoria() {
+            arrayImg.sort(() => 0.5 - Math.random());
+            document.write("<table>" +
+                "<tr>" +
+                "<td>" + arrayImg[0] + "</td>" +
+                "<td>" + arrayImg[1] + "</td>" +
+                "<td>" + arrayImg[2] + "</td>" +
+                "<td>" + arrayImg[3] + "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" + arrayImg[4] + "</td>" +
+                "<td>" + arrayImg[5] + "</td>" +
+                "<td>" + arrayImg[6] + "</td>" +
+                "<td>" + arrayImg[7] + "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>" + arrayImg[8] + "</td>" +
+                "<td>" + arrayImg[9] + "</td>" +
+                "<td>" + arrayImg[10] + "</td>" +
+                "<td>" + arrayImg[11] + "</td>" +
+                "</tr>" +
+                "<div>" +
+                "<h1 id='ganar'></h1>" +
+                "<h2 id='puntuacion'></h2>" +
+                "</div>" +
+
+                "</table>");
+        }
+
+        crearTablaAleatoria();
+
         document.addEventListener("DOMContentLoaded", ocultarImagenes);
         var puntuacion = 0;
         var hasPinchado = false;
@@ -98,13 +141,14 @@
             }
         }
 
-
-
         function comprobarImagenes() {
             if (primeraVez.className === segundaVez.className) {
                 primeraVez.parentElement.style.background = "green";
                 segundaVez.parentElement.style.background = "green";
                 puntuacion++;
+                if (puntuacion > 5) {
+                    document.getElementById("ganar").innerHTML = ("¡¡GANASTE!!");
+                }
                 document.getElementById("puntuacion").innerHTML = ("Tu puntuacion es: " + puntuacion);
                 primeraVez.parentElement.removeEventListener("click", mostrarImagenes);
                 segundaVez.parentElement.removeEventListener("click", mostrarImagenes);
@@ -112,7 +156,7 @@
             } else {
                 primeraVez.parentElement.style.background = "red";
                 segundaVez.parentElement.style.background = "red";
-                setTimeout(function() {
+                setTimeout(function () {
                     primeraVez.style.opacity = 0;
                     segundaVez.style.opacity = 0;
                     primeraVez.parentElement.style.background = "white";
@@ -127,6 +171,7 @@
             segundaVez = null;
         }
     </script>
+    <button id='reinicio' onclick='location.reload()'>Reiniciar Juego</button>
 </body>
 
 </html>
