@@ -1,177 +1,207 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>u4e04_parejas</title>
     <style>
-        #b {
-            background-image: url("./img/8.jpg");
-        }
+      #b {
+        background-image: url("./img/8.jpg");
+      }
 
-        table {
-            margin: auto;
-            background: white;
-            border: solid blue 2px;
-        }
+      table {
+        margin: auto;
+        background: white;
+        border: solid blue 2px;
+      }
 
-        h1 {
-            color: blue;
-            text-align: center;
-            border-radius: 20px;
-        }
+      h1 {
+        color: blue;
+        text-align: center;
+        border-radius: 20px;
+      }
 
-        #ganar {
-            color: green;
-            text-align: center;
-            background: black;
-            border-radius: 20px;
-        }
+      #ganar {
+        color: green;
+        text-align: center;
+        background: black;
+        border-radius: 20px;
+      }
 
-        #reinicio {
-            height: 100px;
-            width: 100px;
-            margin: 10px ;
-            position: relative;
-            top: 50%;
-            left: 45%;
-        }
+      #reinicio {
+        height: 100px;
+        width: 100px;
+        margin: 10px;
+        position: relative;
+        top: 50%;
+        left: 47%;
+      }
 
-        h2 {
-            color: green;
-            text-align: center;
-            background: black;
-            border-radius: 20px;
-        }
+      h2 {
+        color: green;
+        text-align: center;
+        background: black;
+        border-radius: 20px;
+      }
 
-        tr td {
-            height: 80px;
-            width: 80px;
-            border: solid black 2px;
-        }
+      tr td {
+        height: 80px;
+        width: 80px;
+        border: solid black 2px;
+      }
 
-        img {
-            width: 100px;
-            height: 100px;
-        }
+      img {
+        width: 100px;
+        height: 100px;
+      }
     </style>
-</head>
+  </head>
 
-<body id="b">
-    <h1> JUEGO DE PAREJAS</h1>
+  <body id="b">
+    <h1>JUEGO DE PAREJAS</h1>
     <script>
-        let arrayImg = ["<img id='imagen1' class='0' src='imagenes/0.jpg' +'/>",
-            "<img id='imagen2' class='3' src='imagenes/3.jpg'>",
-            "<img id='imagen3' class='2' src='imagenes/2.jpg'>",
-            "<img id='imagen4' class='4' src='imagenes/4.jpg' >",
-            "<img id='imagen5' class='1' src='imagenes/1.jpg' >",
-            "<img id='imagen6' class='3' src='imagenes/3.jpg' >",
-            "<img id='imagen7' class='2' src='imagenes/2.jpg' >",
-            "<img id='imagen8' class='5' src='imagenes/5.jpg' >",
-            "<img id='imagen9' class='0' src='imagenes/0.jpg' >",
-            "<img id='imagen10' class='5' src='imagenes/5.jpg' >",
-            "<img id='imagen11' class='4' src='imagenes/4.jpg' >",
-            "<img id='imagen12' class='1' src='imagenes/1.jpg' >"
-        ];
+      let arrayImg = [
+        "<img id='imagen1' class='0' src='imagenes/0.jpg' +'/>",
+        "<img id='imagen2' class='3' src='imagenes/3.jpg'>",
+        "<img id='imagen3' class='2' src='imagenes/2.jpg'>",
+        "<img id='imagen4' class='4' src='imagenes/4.jpg' >",
+        "<img id='imagen5' class='1' src='imagenes/1.jpg' >",
+        "<img id='imagen6' class='3' src='imagenes/3.jpg' >",
+        "<img id='imagen7' class='2' src='imagenes/2.jpg' >",
+        "<img id='imagen8' class='5' src='imagenes/5.jpg' >",
+        "<img id='imagen9' class='0' src='imagenes/0.jpg' >",
+        "<img id='imagen10' class='5' src='imagenes/5.jpg' >",
+        "<img id='imagen11' class='4' src='imagenes/4.jpg' >",
+        "<img id='imagen12' class='1' src='imagenes/1.jpg' >",
+      ];
 
-        function crearTablaAleatoria() {
-            arrayImg.sort(() => 0.5 - Math.random());
-            document.write("<table>" +
-                "<tr>" +
-                "<td>" + arrayImg[0] + "</td>" +
-                "<td>" + arrayImg[1] + "</td>" +
-                "<td>" + arrayImg[2] + "</td>" +
-                "<td>" + arrayImg[3] + "</td>" +
-                "</tr>" +
-                "<tr>" +
-                "<td>" + arrayImg[4] + "</td>" +
-                "<td>" + arrayImg[5] + "</td>" +
-                "<td>" + arrayImg[6] + "</td>" +
-                "<td>" + arrayImg[7] + "</td>" +
-                "</tr>" +
-                "<tr>" +
-                "<td>" + arrayImg[8] + "</td>" +
-                "<td>" + arrayImg[9] + "</td>" +
-                "<td>" + arrayImg[10] + "</td>" +
-                "<td>" + arrayImg[11] + "</td>" +
-                "</tr>" +
-                "<div>" +
-                "<h1 id='ganar'></h1>" +
-                "<h2 id='puntuacion'></h2>" +
-                "</div>" +
+      function crearTablaAleatoria() {
+        arrayImg.sort(() => 0.5 - Math.random());
+        document.write(
+          "<table>" +
+            "<tr>" +
+            "<td>" +
+            arrayImg[0] +
+            "</td>" +
+            "<td>" +
+            arrayImg[1] +
+            "</td>" +
+            "<td>" +
+            arrayImg[2] +
+            "</td>" +
+            "<td>" +
+            arrayImg[3] +
+            "</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td>" +
+            arrayImg[4] +
+            "</td>" +
+            "<td>" +
+            arrayImg[5] +
+            "</td>" +
+            "<td>" +
+            arrayImg[6] +
+            "</td>" +
+            "<td>" +
+            arrayImg[7] +
+            "</td>" +
+            "</tr>" +
+            "<tr>" +
+            "<td>" +
+            arrayImg[8] +
+            "</td>" +
+            "<td>" +
+            arrayImg[9] +
+            "</td>" +
+            "<td>" +
+            arrayImg[10] +
+            "</td>" +
+            "<td>" +
+            arrayImg[11] +
+            "</td>" +
+            "</tr>" +
+            "<div>" +
+            "<h1 id='ganar'></h1>" +
+            "<h2 id='puntuacion'></h2>" +
+            "</div>" +
+            "</table>"
+        );
+      }
 
-                "</table>");
+      crearTablaAleatoria();
+
+      document.addEventListener("DOMContentLoaded", ocultarImagenes);
+      var puntuacion = 0;
+      var hasPinchado = false;
+      var primeraVez = null;
+      var segundaVez = null;
+
+      var celdas = document.querySelectorAll("td");
+      for (let i = 0; i < celdas.length; i++) {
+        celdas[i].addEventListener("click", mostrarImagenes);
+      }
+
+      function ocultarImagenes() {
+        var imagenes = document.querySelectorAll("img");
+        for (let i = 0; i < imagenes.length; i++) {
+          imagenes[i].style.opacity = 0;
         }
+      }
 
-        crearTablaAleatoria();
+      function mostrarImagenes(e) {
+        e.target.style.opacity = 1;
+        comprobarClick(e.target);
+      }
 
-        document.addEventListener("DOMContentLoaded", ocultarImagenes);
-        var puntuacion = 0;
-        var hasPinchado = false;
-        var primeraVez = null;
-        var segundaVez = null;
-
-        var celdas = document.querySelectorAll("td");
-        for (let i = 0; i < celdas.length; i++) {
-            celdas[i].addEventListener("click", mostrarImagenes);
+      function comprobarClick(elemento) {
+        if (!hasPinchado) {
+          hasPinchado = true;
+          primeraVez = elemento; //Te pone la imagen sobre la que has pinchado visible
+        } else {
+          hasPinchado = false;
+          segundaVez = elemento;
+          comprobarImagenes();
         }
+      }
 
-        function ocultarImagenes() {
-            var imagenes = document.querySelectorAll("img");
-            for (let i = 0; i < imagenes.length; i++) {
-                imagenes[i].style.opacity = 0;
-            }
+      function comprobarImagenes() {
+        if (primeraVez.className === segundaVez.className) {
+          primeraVez.parentElement.style.background = "green";
+          segundaVez.parentElement.style.background = "green";
+          puntuacion++;
+          if (puntuacion > 5) {
+            document.getElementById("ganar").innerHTML = "¡¡GANASTE!!";
+          }
+          document.getElementById("puntuacion").innerHTML =
+            "Tu puntuacion es: " + puntuacion;
+          primeraVez.parentElement.removeEventListener(
+            "click",
+            mostrarImagenes
+          );
+          segundaVez.parentElement.removeEventListener(
+            "click",
+            mostrarImagenes
+          );
+          vaciarIntentos();
+        } else {
+          primeraVez.parentElement.style.background = "red";
+          segundaVez.parentElement.style.background = "red";
+          setTimeout(function () {
+            primeraVez.style.opacity = 0;
+            segundaVez.style.opacity = 0;
+            primeraVez.parentElement.style.background = "white";
+            segundaVez.parentElement.style.background = "white";
+            vaciarIntentos();
+          }, 500);
         }
+      }
 
-        function mostrarImagenes(e) {
-            e.target.style.opacity = 1;
-            comprobarClick(e.target);
-
-        }
-
-        function comprobarClick(elemento) {
-            if (!hasPinchado) {
-                hasPinchado = true;
-                primeraVez = elemento; //Te pone la imagen sobre la que has pinchado visible
-            } else {
-                hasPinchado = false;
-                segundaVez = elemento;
-                comprobarImagenes();
-            }
-        }
-
-        function comprobarImagenes() {
-            if (primeraVez.className === segundaVez.className) {
-                primeraVez.parentElement.style.background = "green";
-                segundaVez.parentElement.style.background = "green";
-                puntuacion++;
-                if (puntuacion > 5) {
-                    document.getElementById("ganar").innerHTML = ("¡¡GANASTE!!");
-                }
-                document.getElementById("puntuacion").innerHTML = ("Tu puntuacion es: " + puntuacion);
-                primeraVez.parentElement.removeEventListener("click", mostrarImagenes);
-                segundaVez.parentElement.removeEventListener("click", mostrarImagenes);
-                vaciarIntentos();
-            } else {
-                primeraVez.parentElement.style.background = "red";
-                segundaVez.parentElement.style.background = "red";
-                setTimeout(function () {
-                    primeraVez.style.opacity = 0;
-                    segundaVez.style.opacity = 0;
-                    primeraVez.parentElement.style.background = "white";
-                    segundaVez.parentElement.style.background = "white";
-                    vaciarIntentos();
-                }, 500);
-            }
-        }
-
-        function vaciarIntentos() {
-            primeraVez = null;
-            segundaVez = null;
-        }
+      function vaciarIntentos() {
+        primeraVez = null;
+        segundaVez = null;
+      }
     </script>
-    <button id='reinicio' onclick='location.reload()'>Reiniciar Juego</button>
-</body>
-
+    <button id="reinicio" onclick="location.reload()">Reiniciar Juego</button>
+  </body>
 </html>
