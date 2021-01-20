@@ -4,8 +4,301 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .error {
+            border: solid 2px #FF0000;
+        }
+    </style>
 </head>
 <body>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", inicio);
+
+
+        function inicio() {
+            document.getElementById("Validar").addEventListener('click', validarFormulario, false);
+        }
+
+        function validarFormulario(e) {
+
+            var respuestaC1 = document.getElementById('1').value;
+            var respuestaC2 = document.getElementById('5').value;
+            var respuestaC3 = document.getElementById('9').value;
+            var respuestaC4 = document.getElementById('10').value;
+            var respuestaC5 = document.getElementById('14').value;
+            var respuestaC6 = document.getElementById('18').value;
+            var respuestaC7 = document.getElementById('21').value;
+            var respuestaC8 = document.getElementById('23').value;
+            var respuestaC9 = document.getElementById('27').value;
+            var respuestaC10 = document.getElementById('28').value;
+
+            var opcion1 = document.getElementsByName('eleccion1').value;
+            if(opcion1 == "" || opcion1 == null || opcion1 == undefined){
+                var elemento = document.getElementById('Respuesta1');
+                alert("No has puesto ninguna Respuesta en la pregunta 1");
+                e.preventDefault();
+                error(elemento);
+
+            }else if(respuestaC1 == opcion1){
+                var elemento = document.getElementById('Respuesta1');
+                limpiarError(elemento);
+                elemento.innerHTML('Yes');
+            }else if(respuestaC1 != opcion1){
+                var elemento = document.getElementById('Respuesta1');
+                limpiarError(elemento);
+                //tick rojo
+            }
+
+            var opcion2 = document.getElementsByName('eleccion2').value;
+            if(opcion2 == "" || opcion2 == null || opcion2 == undefined){
+                var elemento = document.getElementById('Respuesta2');
+                alert("No has puesto ninguna Respuesta en la pregunta 2");
+                e.preventDefault();
+                error(elemento);
+
+            }else if(respuestaC2 == opcion2){
+                var elemento = document.getElementById('Respuesta2');
+                limpiarError(elemento);
+                //tick verde
+            }else if(respuestaC2 != opcion2){
+                var elemento = document.getElementById('Respuesta2');
+                limpiarError(elemento);
+                //tick rojo
+            }
+
+            var opcion3 = document.getElementsByName('eleccion3').value;
+            if(opcion3 == "" || opcion3 == null || opcion3 == undefined){
+                var elemento = document.getElementById('Respuesta3');
+                alert("No has puesto ninguna Respuesta en la pregunta 3");
+                e.preventDefault();
+                error(elemento);
+
+            }else if(respuestaC3 == opcion3){
+                var elemento = document.getElementById('Respuesta3');
+                limpiarError(elemento);
+                //tick verde
+            }else if(respuestaC3 != opcion3){
+                var elemento = document.getElementById('Respuesta3');
+                limpiarError(elemento);
+                //tick rojo
+            }
+
+            var opcion4 = document.getElementsByName('eleccion4').value;
+            if(opcion4 == "" || opcion4 == null || opcion4 == undefined){
+                var elemento = document.getElementById('Respuesta4');
+                alert("No has puesto ninguna Respuesta en la pregunta 4");
+                e.preventDefault();
+                error(elemento);
+
+            }else if(respuestaC4 == opcion4){
+                var elemento = document.getElementById('Respuesta4');
+                limpiarError(elemento);
+                //tick verde
+            }else if(respuestaC4 != opcion4){
+                var elemento = document.getElementById('Respuesta4');
+                limpiarError(elemento);
+                //tick rojo
+            }
+
+            var opcion5 = document.getElementsByName('eleccion5').value;
+            if(opcion5 == "" || opcion5 == null || opcion5 == undefined){
+                var elemento = document.getElementById('Respuesta5');
+                alert("No has puesto ninguna Respuesta en la pregunta 5");
+                e.preventDefault();
+                error(elemento);
+
+            }else if(respuestaC5 == opcion5){
+                var elemento = document.getElementById('Respuesta5');
+                limpiarError(elemento);
+                //tick verde
+            }else if(respuestaC5 != opcion5){
+                var elemento = document.getElementById('Respuesta5');
+                limpiarError(elemento);
+                //tick rojo
+            }
+
+            var opcion6 = document.getElementsByName('eleccion6').value;
+            if(opcion6 == "" || opcion6 == null || opcion6 == undefined){
+                var elemento = document.getElementById('Respuesta6');
+                alert("No has puesto ninguna Respuesta en la pregunta 6");
+                e.preventDefault();
+                error(elemento);
+
+            }else if(respuestaC6 == opcion6){
+                var elemento = document.getElementById('Respuesta6');
+                limpiarError(elemento);
+                //tick verde
+            }else if(respuestaC6 != opcion6){
+                var elemento = document.getElementById('Respuesta6');
+                limpiarError(elemento);
+                //tick rojo
+            }
+
+            var opcion7 = document.getElementsByName('eleccion7').value;
+            if(opcion7 == "" || opcion7 == null || opcion7 == undefined){
+                var elemento = document.getElementById('Respuesta7');
+                alert("No has puesto ninguna Respuesta en la pregunta 7");
+                e.preventDefault();
+                error(elemento);
+
+            }else if(respuestaC7 == opcion7){
+                var elemento = document.getElementById('Respuesta7');
+                limpiarError(elemento);
+                //tick verde
+            }else if(respuestaC7 != opcion7){
+                var elemento = document.getElementById('Respuesta7');
+                limpiarError(elemento);
+                //tick rojo
+            }
+
+            var opcion8 = document.getElementsByName('eleccion8').value;
+            if(opcion8 == "" || opcion8 == null || opcion8 == undefined){
+                var elemento = document.getElementById('Respuesta8');
+                alert("No has puesto ninguna Respuesta en la pregunta 8");
+                e.preventDefault();
+                error(elemento);
+
+            }else if(respuestaC8 == opcion8){
+                var elemento = document.getElementById('Respuesta8');
+                limpiarError(elemento);
+                //tick verde
+            }else if(respuestaC8 != opcion8){
+                var elemento = document.getElementById('Respuesta8');
+                limpiarError(elemento);
+                //tick rojo
+            }
+
+            var opcion9 = document.getElementsByName('eleccion9').value;
+            if(opcion9 == "" || opcion9 == null || opcion9 == undefined){
+                var elemento = document.getElementById('Respuesta9');
+                alert("No has puesto ninguna Respuesta en la pregunta 9");
+                e.preventDefault();
+                error(elemento);
+
+            }else if(respuestaC9 == opcion9){
+                var elemento = document.getElementById('Respuesta9');
+                limpiarError(elemento);
+                //tick verde
+            }else if(respuestaC9 != opcion9){
+                var elemento = document.getElementById('Respuesta9');
+                limpiarError(elemento);
+                //tick rojo
+            }
+
+            var opcion10 = document.getElementsByName('eleccion10').value;
+            if(opcion10 == "" || opcion10 == null || opcion10 == undefined){
+                var elemento = document.getElementById('Respuesta10');
+                alert("No has puesto ninguna Respuesta en la pregunta 10");
+                e.preventDefault();
+                error(elemento);
+
+            }else if(respuestaC10 == opcion10){
+                var elemento = document.getElementById('Respuesta10');
+                limpiarError(elemento);
+                //tick verde
+            }else if(respuestaC10 != opcion10){
+                var elemento = document.getElementById('Respuesta10');
+                limpiarError(elemento);
+                //tick rojo
+            }
+        }
+
+
+        function error(elemento) {
+            elemento.className = "error";
+            elemento.focus();
+        }
+
+        function limpiarError(elemento) {
+            elemento.className = "";
+        }
+    </script>
+
+    <form method="post" action=" ">
+            <fieldset>
+                <legend>Preguntas de One Piece</legend>
+                <div>
+                    <label id="Respuesta1" >¿Quien es el personaje principal?</label><br>
+                    <input id="1" type="radio" name="eleccion1" value="Luffy">Luffy<br>
+                    <input id="2" type="radio" name="eleccion1" value="Zoro">Zoro<br>
+                    <input id="3" type="radio" name="eleccion1" value="Nami">Nami<br>
+                </div>
+
+                <div>
+                    <label id="Respuesta2">¿Cual es la recompensa de Chopper?</label><br>
+                    <input id="4" type="radio" name="eleccion2" value="0 berris">0 berris<br>
+                    <input id="5" type="radio" name="eleccion2" value="500 berris">500 berris<br>
+                    <input id="6" type="radio" name="eleccion2" value="100000 berris">100000 berris<br>
+                </div>
+
+                <div>
+                    <label id="Respuesta3">¿Cuantos capitulos Tiene?</label><br>
+                    <input id="7" type="radio" name="eleccion3" value="50">50<br>
+                    <input id="8" type="radio" name="eleccion3" value="200">200<br>
+                    <input id="9" type="radio" name="eleccion3" value="1000">1000<br>
+                </div>
+
+                <div>
+                    <label id="Respuesta4">¿Cual es el primer enemigo de Luffy?</label><br>
+                    <input id="10" type="radio" name="eleccion4" value="Buggy">Buggy<br>
+                    <input id="11" type="radio" name="eleccion4" value="Enel">Enel<br>
+                    <input id="12" type="radio" name="eleccion4" value="Naruto">Naruto<br>
+                </div>
+
+                <div>
+                    <label id="Respuesta5">¿Cual es el primer personaje que se une a Luffy?</label><br>
+                    <input id="13" type="radio" name="eleccion5" value="Ussuf">Ussuf<br>
+                    <input id="14" type="radio" name="eleccion5" value="Zoro">Zoro<br>
+                    <input id="15" type="radio" name="eleccion5" value="Nami">Nami<br>
+                </div>
+
+                <div>
+                    <label id="Respuesta6">¿Quien es el ultimo personaje en unirse a la banda?</label><br>
+                    <input id="16" type="radio" name="eleccion6" value="Sanji">Sanji<br>
+                    <input id="17" type="radio" name="eleccion6" value="Olaf">Olaf<br>
+                    <input id="18" type="radio" name="eleccion6" value="Jimbei">Jimbei<br>
+                </div>
+
+                <div>
+                    <label id="Respuesta7">¿Quien es Shanks para luffy?</label><br>
+                    <input id="19" type="radio" name="eleccion7" value="Tio">Tio<br>
+                    <input id="20" type="radio" name="eleccion7" value="Padre">Padre<br>
+                    <input id="21" type="radio" name="eleccion7" value="Amigo">Amigo<br>
+                </div>
+
+                <div>
+                    <label id="Respuesta8">¿Quien es Garp para luffy?</label><br>
+                    <input id="22" type="radio" name="eleccion8" value="Tio">Tio<br>
+                    <input id="23" type="radio" name="eleccion8" value="Abuelo">Padre<br>
+                    <input id="24" type="radio" name="eleccion8" value="Amigo">Amigo<br>
+                </div>
+
+                <div>
+                    <label id="Respuesta9">¿Cual es la recompensa de Zoro?</label><br>
+                    <input id="25" type="radio" name="eleccion9" value="0 berris">0 berris<br>
+                    <input id="26" type="radio" name="eleccion9" value="500 berris">500 berris<br>
+                    <input id="27" type="radio" name="eleccion9" value="100000 berris">100000 berris<br>
+                </div>
+
+                <div>
+                    <label id="Respuesta10">¿Cual es la recompensa de Ussuf?</label><br>
+                    <input id="28" type="radio" name="eleccion10" value="0 berris">0 berris<br>
+                    <input id="29" type="radio" name="eleccion10" value="500 berris">500 berris<br>
+                    <input id="30" type="radio" name="eleccion10" value="100000 berris">100000 berris<br>
+                </div>
+
+                <br>
+                <div>
+                    <input type="submit" name="Validar" id="Validar" value="Validar">
+
+                </div>
+                
+
+            </fieldset>
+    </form>
+
     
 </body>
 </html>
