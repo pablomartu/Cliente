@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos de los apuntes</title>
+    <style>
+        .rojo {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Párrafo DOM primero</p>
+    <p class="rojo">Párrafo DOM segundo</p>
+    <p class="rojo">Párrafo DOM tercero</p>
+    <p id="provisional">Párrafo provisional</p>
+
+    <script>
+        //Eliminar un párrafo
+        console.log("Eliminamos un párrafo")
+        let parrafo = document.getElementById("provisional");
+        parrafo.parentNode.removeChild(parrafo);
+        //Otra opción con un método de Document:
+        //parrafo.remove(parrafo);     
+        
+        //Acceder a todos los párrafos de un documento y mostrar su texto
+        console.log("Todos los PÁRRAFOS del documento")
+        let parrafos = document.getElementsByTagName("p");
+        for (i = 0; i < parrafos.length; i++) {
+            console.log(parrafos[i].innerHTML);
+        }
+
+        //Crear un nuevo párrafo e insertarlo después de los otros párrafos
+        let elementoP = document.createElement("p");
+        let texto = "Párrafo DOM cuarto";
+        let nodoTexto = document.createTextNode(texto);
+        elementoP.appendChild(nodoTexto);
+        document.body.insertBefore(elementoP, document.scripts[0]);
+
+        //Acceder a todos los elementos de una clase y cambiarles el color del fondo
+        console.log("Todos los elementos ROJOS: fondo verde")
+        let elementosRojos = document.getElementsByClassName("rojo");
+        for (i = 0; i < elementosRojos.length; i++) {
+            elementosRojos[i].style.backgroundColor = "green";
+        }
+
+        //Acceder al primer párrafo y asignarle la clase rojo
+        console.log("Primer párrafo: también ROJO")
+        let primerParrafo = document.body.firstElementChild;
+        primerParrafo.setAttribute("class", "rojo")
+    </script>
+</body>
+
+</html>
