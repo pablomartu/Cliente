@@ -20,9 +20,19 @@
       document.addEventListener("DOMContentLoaded", inicio);
 
       function inicio() {
-        document
-          .getElementById("Validar")
-          .addEventListener("click", validarFormulario, false);
+        document.getElementById("Validar").addEventListener("click", validarFormulario, false);
+            var obtenerValores = JSON.parse(localStorage.getItem("valor"));
+            var inputs = document.querySelectorAll('input[type="radio"]');
+            for (let i = 0; i < obtenerValores.length; i++) {
+                var seleccionado = false;
+                for (var j = 0; j < inputs.length; j++) {
+                    if (obtenerValores[i] == inputs[j].value) {
+                        seleccionado = true;
+                        inputs[j].checked = true;
+                    }
+                }
+
+            }
       }
 
       function validarFormulario(e) {
@@ -331,17 +341,19 @@
 
         //LOCAL STORAGE
         var inputs = document.querySelectorAll('input[type="radio"]');
-            var resultado2 = "";
+        var resultado2 = [];
             var seleccionado = false;
             for (var i = 0; i < inputs.length; i++) {
                 if (inputs[i].checked) {
                     seleccionado = true;
                     var resultado1 = inputs[i].value;
-                    resultado2 += resultado1 + " ";
+                    resultado2.push(resultado1);
 
                 }
             }
-            localStorage.setItem("valor", resultado2);
+            localStorage.setItem("valor", JSON.stringify(resultado2));
+
+    
       }
 
       function error(elemento) {
