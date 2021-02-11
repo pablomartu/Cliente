@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX con archivos de texto</title>
+</head>
+
+<body>
+    <div id="texto">
+        <h1>AJAX</h1>
+        <button id="cambiaContenido">Cambia el contenido</button>
+    </div>
+
+    <script>
+        document.getElementById("cambiaContenido").addEventListener("click", cambiaContenido);
+
+        function cambiaContenido() {
+            //**OPCIÓN 1: utilizando el objeto XMLHttpRequest
+            //1. Crear el objeto XMLHttpRequest
+            let xhr = new XMLHttpRequest();
+            //2. Asignar el manejador de eventos
+            xhr.addEventListener("readystatechange", function () { //Dentro uso this, no puede ser función =>
+                if (this.readyState === 4 && this.status === 200) { //Servidor ha terminado con respuesta OK
+                    document.getElementById("texto").innerHTML = this
+                        .responseText; //El fichero está en this.responseText
+                }
+            });
+            //3. Inicializar el objeto XMLHttpRequest
+            /* .open: define la conexión
+                - GET/POST.
+                - Archivo: txt, php, xml, json, etc.
+                - true/false: método de envío, por defecto true, asíncrono */
+            xhr.open("GET", "holamundo.txt", true);
+            // 3.1. En este caso no: SOLO SI POST enviar las cabeceras
+            // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            //4. Enviar la petición al servidor
+            /* .send: envía la solicitud al servidor.
+                Si utilizamos POST debemos pasar los datos por parámetro */
+            xhr.send();
+
+            //**OPCIÓN 2: utilizando la API fetch y promesas
+            // //1. Crear una función asíncrona: devuelve una promesa
+            // async function obtenerTexto(url) {
+            //     let objeto = await fetch(url); //usar await para llamar a fetch()
+            //     let texto = await objeto.text(); //usar await para llamar a Response.text()
+            //     document.getElementById("texto").innerHTML = texto;
+            // }
+            // //2. Invocar a la función asíncrona con el recurso como argumento
+            // obtenerTexto("holamundo.txt");
+        }
+    </script>
+
+</body>
+
+</html>

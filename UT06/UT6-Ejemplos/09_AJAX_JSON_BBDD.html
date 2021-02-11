@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX con Bases de Datos, JSON y PHP</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", inicio);
+
+        function inicio() {
+            document.getElementById("mostrar").addEventListener("click", mostrar);
+        }
+
+        function mostrar() {
+            let puntos = document.getElementById("puntuacion").value;
+            let objeto = {
+                "tabla": "alumnos",
+                "valor": parseInt(puntos)
+            };
+            let parametros = JSON.stringify(objeto);
+            let txt = "";
+
+            //**OPCIÓN 1: utilizando el objeto XMLHttpRequest
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener("readystatechange", function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    let array = JSON.parse(this.responseText);
+                    for (const x in array) {
+                        txt += array[x].alumno + " : " + array[x].puntuacion + "<br>";
+                    }
+                    document.getElementById("texto").innerHTML = txt;
+                }
+            });
+            /*xhr.open("GET", "09_AJAX_JSON_BBDD.php?objeto=" + parametros);
+            xhr.send();*/
+            xhr.open("POST", "09_AJAX_JSON_BBDD.php");
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send("objeto=" + parametros);
+
+            //**OPCIÓN 2: utilizando la API fetch y promesas
+            // let opciones = {
+            //     method: "POST",
+            //     body: "objeto=" + parametros,
+            //     headers: {
+            //         "Content-type": "application/x-www-form-urlencoded"
+            //     }
+            // };
+            // async function obtenerTexto(url) {
+            //     let objeto = await fetch(url, opciones);
+            //     let array = await objeto.json();
+            //     for (const x in array) {
+            //         txt += array[x].alumno + " : " + array[x].puntuacion + "<br>";
+            //     }
+            //     document.getElementById("texto").innerHTML = txt;
+            // }
+            // obtenerTexto("09_AJAX_JSON_BBDD.php");
+        }
+    </script>
+</head>
+
+<body>
+    Puntuacion:
+    <input type="number" id="puntuacion">
+    <button id="mostrar">Enviar</button>
+    <div id="texto"></div>
+</body>
+
+</html>

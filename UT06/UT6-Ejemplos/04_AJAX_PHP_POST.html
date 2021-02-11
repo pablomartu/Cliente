@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX con PHP y POST</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", inicio);
+
+        function inicio() {
+            document.getElementById("nombre").addEventListener("keyup", mostrarNombre);
+        }
+
+        function mostrarNombre(e) {
+            let cadena = e.target.value;
+            //Otra opción válida:
+            //let cadena = document.getElementById("nombre").value
+
+            if (cadena.length === 0) {
+                document.getElementById("sugerencia").innerHTML = "";
+                return;
+            } else {
+                //**OPCIÓN 1: utilizando el objeto XMLHttpRequest
+                let xhr = new XMLHttpRequest();
+                xhr.addEventListener("readystatechange", function () {
+                    if (this.readyState === 4 && this.status === 200) {
+                        document.getElementById("sugerencia").innerHTML = this.responseText;
+                    }
+                });
+                //xhr.open("GET", "arraynombres.php?nombre=" + cadena);
+                xhr.open("POST", "arraynombres.php");
+                //Con POST tenemos que incluir la cabecera
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                //Con POST tenemos que pasar los argumentos como parámetros de send, en lugar de en la URL
+                xhr.send("nombre=" + cadena);
+
+                //**OPCIÓN 2: utilizando la API fetch y promesas
+                //Creamos un objeto con configuraciones para personalizar la solicitud
+                // let opciones = {
+                //     method: "POST", //GET o POST
+                //     body: "nombre=" + cadena, //string u {object} solo con POST
+                //     headers: {
+                //         "Content-type": "application/x-www-form-urlencoded"
+                //     } //Objeto de tipo Headers o literal con pares clave:valor para las cabeceras
+                // };
+                // async function obtenerTexto(url) {
+                //     let objeto = await fetch(url, opciones);
+                //     let texto = await objeto.text();
+                //     document.getElementById("sugerencia").innerHTML = texto;
+                // }
+                // obtenerTexto("arraynombres.php");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p><b>Escribe un nombre en el cuadro inferior:</b></p>
+    <form>
+        Nombre:
+        <input type="text" id="nombre">
+    </form>
+    <p>Sugerencias: <span id="sugerencia"></span></p>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 6 - Ejercicio 2: XML con AJAX</title>
+    <link href="fonts/css/all.css" rel="stylesheet">
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+
+        .titulo {
+            font-weight: bold;
+        }
+
+        .director {
+            font-style: italic;
+        }
+
+        .rojo {
+            color: red;
+        }
+
+        .amarillo {
+            color: yellow;
+        }
+
+        .verde {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="texto">
+        <h1>SERIES</h1>
+        <button id="cargaSeries">Carga series</button>
+    </div>
+    <table id="demo"></table>
+
+    <script>
+        document.getElementById("cargaSeries").addEventListener("click", cargarSeries);
+
+        function cargarSeries() {
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener("readystatechange", function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    cargarXML(this);
+                } else if ((this.status > 400) && (this.status < 500)) {
+                    document.getElementById("demo").innerHTML =
+                        "<tr><th>Ha ocurrido un problema al cargar el recurso solicitado.</th></tr>"
+                }
+            });
+            xhr.open("GET", "series2.xml");
+            xhr.send();
+        }
+
+        function cargarXML(xml) {
+            let docXML = xml.responseXML;
+            let tabla = "<tr><th>Titulo</th><th>Cadena</th><th>Director</th><th>Año</th><th>Terminada</th></tr>";
+            let series = docXML.getElementsByTagName("SERIE");
+            let annio;
+            let terminada;
+            let clase;
+            let icono;
+            for (let i = 0; i < series.length; i++) {
+                tabla += "<tr><td class=\"titulo\">";
+                tabla += series[i].getElementsByTagName("TITULO")[0].textContent;
+                tabla += "</td><td class=\"cadena\">";
+                tabla += series[i].getElementsByTagName("CADENA")[0].textContent;
+                tabla += "</td><td class=\"director\">";
+                tabla += series[i].getElementsByTagName("DIRECTOR")[0].textContent;
+                annio = parseInt(series[i].getElementsByTagName("ANNO")[0].textContent);
+                if (annio <= 2000) {
+                    clase = "rojo";
+                } else if (annio <= 2010) {
+                    clase = "amarillo";
+                } else {
+                    clase = "verde";
+                }
+                tabla += "</td><td class=\"" + clase + "\">";
+                tabla += annio;
+
+                terminada = series[i].getElementsByTagName("TERMINADA")[0].textContent;
+                if (terminada == "si") {
+                    icono = "<i style = 'color: green;' class=\"far fa-check-circle\"></i>";
+                } else {
+                    icono = "<i style = 'color: red;' class=\"far fa-times-circle\"></i>";
+                }
+                tabla += "</td><td>" + icono + " " + terminada + "</td></tr>";
+            }
+            document.getElementById("demo").innerHTML = tabla;
+        }
+    </script>
+
+</body>
+
+</html>

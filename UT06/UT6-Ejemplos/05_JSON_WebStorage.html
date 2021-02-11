@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON y WebStorage</title>
+</head>
+<body>
+
+    <h2>Almacenar y recuperar datos de localStorage utilizando JSON</h2>
+
+    <p id="demo"></p>
+
+    <script>
+        let myObj, myJSON, text, obj;
+
+        //ALMACENAR DATOS:
+        //1.Creamos el objeto JavaScript
+        myObj = {
+            nombre: "Ada",
+            nacimiento: 1815,
+            pais: "Reino Unido"
+        };
+        //2.Serializamos el objeto a una cadena JSON
+        myJSON = JSON.stringify(myObj);
+        //3.Lo almacenamos en localStorage
+        localStorage.setItem("testJSON", myJSON);
+
+        //RECUPERAR DATOS:
+        //1.Recuperamos el valor de la variable de localStorage
+        text = localStorage.getItem("testJSON");
+        //2.Recuperamos el objeto JavaScript original que serializamos con JSON
+        obj = JSON.parse(text);
+        //3.Accedemos a los valores del objeto JavaScript
+        document.getElementById("demo").innerHTML = `${obj.nombre} nació en el año ${obj.nacimiento} en ${obj.pais}.`;
+    </script>
+</body>
+</html>

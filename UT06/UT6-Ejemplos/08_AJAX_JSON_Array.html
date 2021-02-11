@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX con arrays JSON y PHP</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", inicio);
+
+        function inicio() {
+            document.getElementById("mostrar").addEventListener("click", mostrar)
+        }
+
+        function mostrar() {
+            //**OPCIÓN 1: utilizando el objeto XMLHttpRequest
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener("readystatechange", function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    //Obtenemos el array JavaScript desde el texto recibido desde el PHP
+                    let alumnos = JSON.parse(this.responseText);
+
+                    //Recorremos el array
+                    for (let i = 0; i < alumnos.length; i++) {
+                        document.getElementById("parrafo").innerHTML += alumnos[i] + "<br>";
+                    }
+
+                    //Para convertir un array Javascript en cadena JSON usamos stringfy
+                    let cadena = JSON.stringify(alumnos);
+                    document.getElementById("parrafo").innerHTML += "El array " + alumnos +
+                        "en modo cadena es " + cadena + "<br>";
+                }
+            });
+            xhr.open("GET", "08_AJAX_JSON_Array.php", true);
+            xhr.send();
+
+            //**OPCIÓN 2: utilizando la API fetch y promesas
+            // async function obtenerTexto(url) {
+            //     let objeto = await fetch(url);
+            //     let alumnos = await objeto.json();
+            //     for (let i = 0; i < alumnos.length; i++) {
+            //         document.getElementById("parrafo").innerHTML += alumnos[i] + "<br>";
+            //     }
+            // }
+            // obtenerTexto("08_AJAX_JSON_Array.php");
+        }
+    </script>
+</head>
+
+<body>
+    <button id="mostrar">Mostrar</button>
+    <p id="parrafo"></p>
+</body>
+
+</html>

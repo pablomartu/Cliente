@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definición y manipulación de objetos JSON</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script>
+        /* SINTAXIS:
+            - Datos: "nombre": "valor" //Siempre el nombre va entre comillas
+            - Valor: número, booleano y null sin comillas; cadena (comillas); objetos (llaves);
+            array (corchetes). No podemos enviar funciones, fechas (no se podrían recuperar), ni undefined.
+            Ej. let ada = {"nombre":"Ada", "nacimiento":1815, "pais":"Reino Unido"} 
+        */
+
+        //OBJETOS JSON: 
+        //Definición: nombre del objeto y entre llaves, el par "nombre": "valor"
+        let objeto1 = {
+            "nombre": "Ada",
+            "nacimiento": 1815,
+            "pais": "Reino Unido"
+        };
+
+        //Acceso: utilizamos la notación punto o corchetes
+        document.getElementById("demo").innerHTML = objeto1.nombre + " : " + objeto1.nacimiento + " : " + objeto1.pais +
+            "<br>";
+        //alert(objeto1["nombre"]+" : "+objeto1["nacimiento"]+" : "+objeto1["pais"]);
+
+        //Recorrer los elementos de un objeto
+        for (let x in objeto1) {
+            document.getElementById("demo").innerHTML += x + ":" + objeto1[x] + "<br>";
+        }
+
+        //Objetos que contienen otros objetos
+        let objeto2 = {
+            "nombre": "Ada",
+            "nacimiento": 1815,
+            "pais": "Reino Unido",
+            "hijos": {
+                "hijo1": "Anne Blunt",
+                "hijo2": "Byron King-Noel",
+                "hijo3": "Ralph King-Milbanke"
+            }
+        }
+
+        //Acceso a un objeto dentro de otro objeto
+        let y = objeto2.hijos.hijo1; //objeto2.hijos["hijo1"];
+        document.getElementById("demo").innerHTML += "Hijo 1 es " + y + "<br>";
+
+        //ARRAYS como valores de propiedades de los objetos JSON: 
+        //nombre del array, y entre corchetes los valores
+        let hijos = {
+            "hijos": ["Anne Blunt", "Byron King-Noel", "Ralph King-Milbanke"]
+        }
+        let objeto3 = {
+            "nombre": "Ada",
+            "nacimiento": 1815,
+            "pais": "Reino Unido",
+            "hijos": ["Anne Blunt", "Byron King-Noel", "Ralph King-Milbanke"]
+        }
+        //Acceso
+        let z = objeto3.hijos[1];
+        document.getElementById("demo").innerHTML += "Hijo 2 es " + z + "<br>";
+
+        //Recorrer los elementos del array array
+        let z1 = "";
+        for (let i in objeto3.hijos) {
+            z1 += objeto3.hijos[i] + ", ";
+        }
+        document.getElementById("demo").innerHTML += "Todos los hijos: " + z1 + "<br>";
+
+        let z2 = "";
+        for (let i = 0; i < objeto3.hijos.length; i++) {
+            z2 += objeto3.hijos[i] + ", ";
+        }
+        document.getElementById("demo").innerHTML += "Todos los hijos: " + z2 + "<br>";
+
+        //Si queremos borrar elementos de un objeto utilizamos "delete"
+    </script>
+
+</body>
+
+</html>

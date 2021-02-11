@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX con archivos XML</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="texto">
+        <h1>Colección de CDs</h1>
+        <button id="cargaCatalogo">Carga catálogo</button>
+    </div>
+    <br>
+    <table id="demo"></table>
+
+    <script>
+        document.getElementById("cargaCatalogo").addEventListener("click", cargarCatalogo);
+
+        function cargarCatalogo() {
+            //1. Crear el objeto XMLHttpRequest
+            let xhr = new XMLHttpRequest();
+            //2. Asignar el manejador de eventos
+            xhr.addEventListener("readystatechange", function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    cargarXML(this);
+                }
+            });
+            //3. Inicializar el objeto XMLHttpRequest
+            xhr.open("GET", "catalogo.xml");
+            //4. Enviar la petición al servidor
+            xhr.send();
+        }
+
+        function cargarXML(xml) {
+            let docXML = xml.responseXML;
+            let tabla = "<tr><th>Artista</th><th>Titulo</th></tr>";
+            //Podemos utilizar la API DOM que conocemos también para XML
+            let discos = docXML.getElementsByTagName("CD");
+            for (let i = 0; i < discos.length; i++) {
+                tabla += "<tr><td>";
+                tabla += discos[i].getElementsByTagName("ARTIST")[0].textContent;
+                tabla += "</td><td>";
+                tabla += discos[i].getElementsByTagName("TITLE")[0].textContent;
+                tabla += "</td></tr>";
+            }
+            document.getElementById("demo").innerHTML = tabla;
+        }
+    </script>
+</body>
+
+</html>
