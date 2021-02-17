@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 6 - Ejercicio 1: archivos de texto con AJAX</title>
+</head>
+
+<body>
+    <input type="text" name="url" id="url">
+    <button id="mostrar">Mostrar contenido</button>
+    <textarea name="contenido" id="contenido" cols="60" rows="20"></textarea>
+    <script>
+        document.addEventListener("DOMContentLoaded", inicio);
+
+        function inicio() {
+            document.getElementById("url").value = document.URL;
+            document.getElementById("mostrar").addEventListener("click", cargar);
+        }
+
+        function cargar() {
+            let miURL = document.getElementById("url").value;
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener("readystatechange", gestionServidor);
+
+            function gestionServidor() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("contenido").innerHTML =
+                        xhr.responseText;
+                }
+            }
+            xhr.open("GET", miURL);
+            xhr.send();
+        }
+    </script>
+</body>
+
+</html>

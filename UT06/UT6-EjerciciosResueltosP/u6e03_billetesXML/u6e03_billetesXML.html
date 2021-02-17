@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 6 - Ejercicio 3: XML con AJAX</title>
+</head>
+
+<body>
+    <div id="texto">
+        <h1>BILLETES</h1>
+    </div>
+    <div>
+        <select name="origen" id="origen"></select>
+        <select name="destino" id="destino"></select>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", inicio);
+
+        function inicio() {
+            cargarOrigenes();
+            document.getElementById("origen").addEventListener("change", cargarDestinos);
+        }
+
+        // ORÍGENES
+        function cargarOrigenes() {
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener("readystatechange", function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    cargarXMLOrigenes(this);
+                    cargarDestinos();
+                }
+            });
+            xhr.open("GET", "viajes.xml");
+            xhr.send();
+        }
+
+        function cargarXMLOrigenes(xml) {
+            let docXML = xml.responseXML;
+            let opciones = "";
+            let origenes = docXML.getElementsByTagName("ORIGEN");
+            for (let i = 0; i < origenes.length; i++) {
+                opciones += "<option>" + origenes[i].textContent + "</option>";
+            }
+            document.getElementById("origen").innerHTML = opciones;
+        }
+
+        // DESTINOS
+        function cargarDestinos() {
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener("readystatechange", function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    cargarXMLDestinos(this);
+                }
+            });
+            xhr.open("GET", "viajes.xml");
+            xhr.send();
+        }
+
+        function cargarXMLDestinos(xml) {
+            // origen seleccionado
+            let origenSeleccionado = document.getElementById("origen").value;
+            let docXML = xml.responseXML;
+            let opciones = "";
+            let origenes = docXML.getElementsByTagName("ORIGEN");
+            let destinos;
+            for (let i = 0; i < origenes.length; i++) {
+                if (origenes[i].textContent === origenSeleccionado) {
+                    destinos = origenes[i].parentElement.getElementsByTagName("DESTINO");
+                    for (let j = 0; j < destinos.length; j++) {
+                        opciones += "<option>" + destinos[j].textContent + "</option>";
+                    }
+                }
+            }
+            document.getElementById("destino").innerHTML = opciones;
+        }
+    </script>
+</body>
+
+</html>

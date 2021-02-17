@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 6 - Ejercicio 7 - AJAX con JSON</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="texto">
+        <h1>Portafolio</h1>
+        <button id="carga">Carga</button>
+    </div>
+    <table id="demo"></table>
+
+    <script>
+        document.getElementById("carga").addEventListener("click", cargar);
+
+        function cargar() {
+            async function obtenerTexto(url) {
+                let objeto = await fetch(url);
+                let json = await objeto.json();
+                cargarJSON(json);
+            }
+            obtenerTexto("portafolio.json");
+        }
+
+        function cargarJSON(json) {
+            let tabla = "<tr><th>Titulo</th><th>Fecha</th><th>Texto</th></tr>";
+            let fechas = json.fechas;
+            for (let i = 0; i < fechas.length; i++) {
+                tabla += "<tr><td>";
+                tabla += fechas[i].titulo;
+                tabla += "</td><td>";
+                tabla += fechas[i].fecha;
+                tabla += "</td><td>";
+                tabla += fechas[i].texto;
+                tabla += "</td></tr>";
+            }
+            document.getElementById("demo").innerHTML = tabla;
+        }
+    </script>
+
+</body>
+
+</html>

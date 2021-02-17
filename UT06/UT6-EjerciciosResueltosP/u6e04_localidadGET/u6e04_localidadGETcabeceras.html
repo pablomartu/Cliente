@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 6 - Ejercicio 4 - AJAX con PHP y GET</title>
+    <style>
+        .esta {
+            background-color: green;
+        }
+
+        .noEsta {
+            background-color: red;
+        }
+
+        .blanco {
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="localidad">Localidad: </label>
+        <input type="text" name="localidad" id="localidad">
+        <button id="mostrar">Mostrar</button>
+    </div>
+    <div id="resultado"></div>
+    <div id="cabeceras"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", inicio);
+
+        function inicio() {
+            document.getElementById("mostrar").addEventListener("click", mostrar);
+        }
+
+        function mostrar() {
+            let miLocalidad = document.getElementById("localidad").value;
+            let miDiv = document.getElementById("resultado");
+            if (miLocalidad.length === 0) {
+                miDiv.className = "blanco";
+            } else {
+                let xhr = new XMLHttpRequest();
+                xhr.addEventListener("readystatechange", gestionServidor);
+
+                function gestionServidor() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        let resp = xhr.responseText;
+                        if (resp === "S") {
+                            miDiv.innerHTML = "Sí que está incluida";
+                            miDiv.className = "esta";
+                        } else {
+                            miDiv.innerHTML = "No está incluida";
+                            miDiv.className = "noEsta";
+                        }
+                        let cabeceras = "";
+                        cabeceras = document.getElementById("cabeceras").innerHTML;
+                        cabeceras +=
+                            "<br>Contenido de getAllResponseHeaders() = " +
+                            xhr.getAllResponseHeaders() +
+                            "<br><br>Cabeceras:" +
+                            "<br>date: " + xhr.getResponseHeader("date") +
+                            "<br>server: " + xhr.getResponseHeader("server") +
+                            "<br>connection: " + xhr.getResponseHeader("connection") +
+                            "<br>x-powered-by: " + xhr.getResponseHeader("x-powered-by") +
+                            "<br>content-length: " + xhr.getResponseHeader("content-length") +
+                            "<br>keep-alive: " + xhr.getResponseHeader("keep-alive") +
+                            "<br>content-type: " + xhr.getResponseHeader("content-type");
+                        document.getElementById("cabeceras").innerHTML = cabeceras;
+                    }
+
+                }
+                xhr.open("GET", "arraylocalidades.php?localidad=" + miLocalidad);
+                xhr.send();
+            }
+        }
+    </script>
+</body>
+
+</html>

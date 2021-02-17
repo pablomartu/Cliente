@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 6 - Ejercicio 5 - AJAX con PHP y POST</title>
+    <style>
+        .esta {
+            background-color: green;
+        }
+
+        .noEsta {
+            background-color: red;
+        }
+
+        .blanco {
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="localidad">Localidad: </label>
+        <input type="text" name="localidad" id="localidad">
+        <button id="mostrar">Mostrar</button>
+    </div>
+    <div id="resultado"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", inicio);
+
+        function inicio() {
+            document.getElementById("mostrar").addEventListener("click", mostrar);
+        }
+
+        function mostrar() {
+            let miLocalidad = document.getElementById("localidad").value;
+            let miDiv = document.getElementById("resultado");
+            if (miLocalidad.length === 0) {
+                miDiv.className = "blanco";
+                miDiv.innerHTML = "";
+            } else {
+                //Objeto para personalizar la solicitud
+                let opciones = {
+                    method: "POST",
+                    body: "localidad=" + miLocalidad,
+                    headers: {
+                        "Content-type": "application/x-www-form-urlencoded"
+                    }
+                };
+                async function obtenerTexto(url) {
+                    let objeto = await fetch(url, opciones);
+                    let texto = await objeto.text();
+                    if (texto === "S") {
+                        miDiv.innerHTML = "Sí que está incluida";
+                        miDiv.className = "esta";
+                    } else {
+                        miDiv.innerHTML = "No está incluida";
+                        miDiv.className = "noEsta";
+                    }
+                }
+                obtenerTexto("arraylocalidades.php");
+            }
+        }
+    </script>
+</body>
+
+</html>
