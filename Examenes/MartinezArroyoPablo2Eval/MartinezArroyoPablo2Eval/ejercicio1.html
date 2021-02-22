@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -154,3 +155,161 @@
     <div id="matriculados"></div>
   </body>
 </html>
+=======
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba 2ª evaluación</title>
+    <style>
+        h1 {
+            color: darkred;
+        }
+
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+        }
+
+        label {
+            display: inline-block;
+            width: 12em;
+            text-align: right;
+            margin-right: 0.5em;
+        }
+
+        input {
+            width: 20em;
+        }
+
+        .rojo {
+            border-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let exp1 = ""; //Expresion Regular que dice que no puede haber valor vacio se puedo poner con un patter en el html o con un required tambien.
+        let exp3 = /[0-9]{2}[1-2]{1}[A-B-F-G-E]{1};//Expresion regular para el grupo
+        let usuarios = [];//Array Usurios
+        let numUsuarios = 0;//Numero de usuarios(se puede hacer sin el)
+
+        document.getElementById("alta").addEventListener('click', function (event) {//creacion del evento cuando hacemos click en Alta
+                    if (numUsuarios > 0) {//Si los usuarios son 0 no carca ningun dato del localStorage
+                        numUsuarios = localStorage.setItem("Usuarios", usuarios);
+                        usuarios = localStorage.setItem("numUsuarios", numUsuarios);
+                    }
+
+                    let valor1 = document.getElementById("nombre").innerHTML;//Sacamos el valor del input numero 1
+                    var error = 0;//iniciamos la variable error a 0
+                    if (!exp1.test(valor1)) {
+                        document.getElementById("nombreErr").innerHTML = "El campo debe de estar relleno";
+                        document.getElementById("grupo").setAttribute("style", "border: 1px solid red;");
+                        error = 1;
+                    }
+                    let valor2 = document.getElementById("nif").innerHTML;
+                    if (!exp1.test(valor2)) {
+                        document.getElementById("nifErr").innerHTML = "El campo debe de estar relleno";
+                        document.getElementById("grupo").setAttribute("style", "border: 1px solid red;");//Pone rojo el borde del input no uso el estilo de arriba
+                        document.getElementById("grupo").focus();//Pone el foco en el input
+                        error = 1;
+                    }
+                    if (comprobarNif(valor2)) {
+                        error = 1;
+                        document.getElementById("nifErr").innerHTML = "El nif esta repetido";
+                        document.getElementById("grupo").setAttribute("style", "border: 1px solid red;");
+                        document.getElementById("grupo").focus();
+                    }
+                    let valor3 = document.getElementById("grupo").innerHTML;
+                    if (!exp1.test(valor3)) {
+                        document.getElementById("grupoErr").innerHTML = "El campo debe de estar relleno";
+                        document.getElementById("grupo").setAttribute("style", "border: 1px solid red;");
+                        document.getElementById("grupo").focus();
+                        error = 1;
+                    }
+                    if (!exp3.text(valor3)) {
+                        document.getElementById("grupoErr").innerHTML = "El campo debe de cumplir los requisitos de: " +
+                            "Dos digitos segido de otro digito entre uno y dos y una letra entre a,b,f,g,e ";
+                        document.getElementById("grupo").setAttribute("style", "border: 1px solid red;");
+                        document.getElementById("grupo").focus();
+                        error = 1;
+                    }
+                    let valor4 = document.getElementById("observaciones").innerHTML;
+
+                    if (error == 0) {
+                        numUsuarios++;
+                        usuarios = [numUsuarios - 1][crearObjetoUsuario(valor1, valor2, valor3, valor4)];
+                        //Guardamos en local storage los datos
+                        numUsuarios = localStorage.setItem("Usuarios", usuarios);
+                        usuarios = localStorage.setItem("numUsuarios", numUsuarios);
+                        let json = JSON.stringify(usuarios);
+
+                        document.getElementById("matriculados").innerHTML=tablaUsuarios(json);
+                    }
+                    //Comprobamos que en el array no hay ningun usuarios con el mismo nif
+                    function comprobarNif(valor2) {
+                        for (let i = 0; i < usuarios.length; i++) {
+                            if (valor2 == usuarios[i][usuario.nif]) {
+                                return true;
+                            }
+                        }
+                    }
+
+                    function tablaUsuarios(json) {
+                        let usuariosJson = JSON.parse(json);
+                        for (let i = 0; i < usuariosJson.length; i++) {
+                            document.write("<tr>");
+                            document.write("<td>" + usuariosJson[i].nombre +"</td>");
+                            document.write("<td>" + usuariosJson[i].nif +"</td>");
+                            document.write("<td>" + usuariosJson[i].grupo +"</td>");
+                            document.write("<td>" + usuariosJson[i].observaciones +"</td>");
+                            document.write("</td>"); 
+                        }
+                    }
+
+                    function crearObjetoUsuario(valor1, valor2, valor3, valor4) {
+                        let usuario = {
+                            nombre: valor1,
+                            nif: valor2,
+                            grupo: valor3,
+                            observaciones: valor4
+                        };
+                    }
+
+                }
+    </script>
+    <h1>Matrícula alumnos</h1>
+    <form>
+        <ul>
+            <li>
+                <label for="nombre">Nombre y apellidos: </label>
+                <input type="text" id="nombre" name="nombre">
+                <span id="nombreErr"></span>
+            </li>
+            <li>
+                <label for="nif">NIF: </label>
+                <input type="text" id="nif" name="nif">
+                <span id="nifErr"></span>
+            </li>
+            <li>
+                <label for="grupo">Grupo: </label>
+                <input type="text" id="grupo" name="grupo">
+                <span id="grupoErr"></span>
+            </li>
+            <li>
+                <label for="observaciones">Observaciones: </label>
+                <input type="text" id="observaciones" name="observaciones">
+                <span id="observacionesErr"></span>
+            </li>
+        </ul>
+        <button id="alta">Alta</button>
+    </form>
+    <div id="matriculados"></div>
+
+</body>
+
+</html>
+>>>>>>> 4717b8e03026c2bbad8970ae3de3c5d5fe1a3232

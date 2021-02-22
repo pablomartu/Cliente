@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -182,3 +183,72 @@
     <script></script>
   </body>
 </html>
+=======
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba 2ª evaluación</title>
+    <style>
+        h1 {
+            color: darkred;
+        }
+
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+        }
+
+        label {
+            display: inline-block;
+            width: 12em;
+            text-align: right;
+            margin-right: 0.5em;
+        }
+
+        input {
+            width: 20em;
+        }
+
+        .rojo {
+            border-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Matrícula alumnos</h1>
+    <form>
+        <ul>
+            <li>
+                <label for="nombre">Nombre y apellidos: </label>
+                <input type="text" id="nombre" name="nombre">
+                <span id="nombreErr"></span>
+            </li>
+            <li>
+                <label for="nif">NIF: </label>
+                <input type="text" id="nif" name="nif">
+                <span id="nifErr"></span>
+            </li>
+            <li>
+                <label for="grupo">Grupo: </label>
+                <input type="text" id="grupo" name="grupo">
+                <span id="grupoErr"></span>
+            </li>
+            <li>
+                <label for="observaciones">Observaciones: </label>
+                <input type="text" id="observaciones" name="observaciones">
+                <span id="observacionesErr"></span>
+            </li>
+        </ul>
+        <button id="alta">Alta</button>
+    </form>
+    <div id="matriculados"></div>
+    <script>
+    </script>
+</body>
+
+</html>
+>>>>>>> 4717b8e03026c2bbad8970ae3de3c5d5fe1a3232
