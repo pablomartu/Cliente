@@ -37,6 +37,7 @@
     <script>
       let exp1 = /^[0-9]{2}[0-9]{1,2}[ABFGE]{1}$/;
       let alumnos = [];
+      let error = 0;
 
       window.onload = inicio;
 
@@ -60,7 +61,8 @@
 
       function alta(e) {
         e.preventDefault();
-        let error = 0;
+        error = 0;
+        limpiarError();
 
         let valor1 = document.getElementById("nombre").value;
         let valor2 = document.getElementById("nif").value;
@@ -68,10 +70,14 @@
         let valor4 = document.getElementById("observaciones").value;
 
         if (valor1 == "" || valor1 == null) {
+          if (error == 0) {
+            document.getElementById("nombre").focus();
+          }
+
           error = 1;
           document.getElementById("nombreErr").innerHTML =
             "El campo esta vacio";
-          document.getElementById("nombre").focus();
+
           document
             .getElementById("nombre")
             .setAttribute("style", "border: 1px solid red;");
@@ -81,14 +87,22 @@
         }
 
         if (valor2 == "" || valor2 == null) {
+          if (error == 0) {
+            document.getElementById("nif").focus();
+          }
+
           error = 1;
           document.getElementById("nifErr").innerHTML = "El campo esta vacio";
-          document.getElementById("nif").focus();
+
           document
             .getElementById("nif")
             .setAttribute("style", "border: 1px solid red;");
           document.getElementById("nifErr").setAttribute("style", "color:red;");
-        } /* else if (comprobarNif(valor2) && alumnos.length != 0) {
+        } else if (comprobarNif(valor2) && alumnos.length != 0) {
+          if (error == 0) {
+            document.getElementById("nif").focus();
+          }
+
           error = 1;
           document.getElementById("nifErr").innerHTML = "El nif ya exite";
           document.getElementById("nif").focus();
@@ -96,12 +110,16 @@
             .getElementById("nif")
             .setAttribute("style", "border: 1px solid red;");
           document.getElementById("nifErr").setAttribute("style", "color:red;");
-        } */
+        }
 
         if (valor3 == "" || valor3 == null) {
+          if (error == 0) {
+            document.getElementById("grupo").focus();
+          }
+
           error = 1;
           document.getElementById("grupoErr").innerHTML = "El campo esta vacio";
-          document.getElementById("grupo").focus();
+
           document
             .getElementById("grupo")
             .setAttribute("style", "border: 1px solid red;");
@@ -109,6 +127,10 @@
             .getElementById("grupoErr")
             .setAttribute("style", "color:red;");
         } else if (!exp1.test(valor3)) {
+          if (error == 0) {
+            document.getElementById("grupo").focus();
+          }
+
           error = 1;
           document.getElementById("grupoErr").innerHTML =
             "El grupo no esta bien escrito";
@@ -135,22 +157,44 @@
         }
       }
 
-      /*  function crearObjetoAlumno(valor1, valor2, valor3, valor4) {
-        alumno = {
-          nombre: valor1,
-          nif: valor2,
-          grupo: valor3,
-          observaciones: valor4,
-        };
-      } */
+      function limpiarError() {
+        document.getElementById("nombreErr").innerHTML = "";
+        document.getElementById("nifErr").innerHTML = "";
+        document.getElementById("grupoErr").innerHTML = "";
+        document.getElementById("observacionesErr").innerHTML = "";
 
-      /* function comprobarNif(valor2) {
+        document
+          .getElementById("nombre")
+          .setAttribute("style", "border: 1px solid black;");
+        document
+          .getElementById("nif")
+          .setAttribute("style", "border: 1px solid black;");
+        document
+          .getElementById("grupo")
+          .setAttribute("style", "border: 1px solid black;");
+        document
+          .getElementById("observaciones")
+          .setAttribute("style", "border: 1px solid black;");
+
+        document
+          .getElementById("nombreErr")
+          .setAttribute("style", "color:black;");
+        document.getElementById("nifErr").setAttribute("style", "color:black;");
+        document
+          .getElementById("grupoErr")
+          .setAttribute("style", "color:black;");
+        document
+          .getElementById("observacionesErr")
+          .setAttribute("style", "color:black;");
+      }
+
+      function comprobarNif(valor2) {
         for (let i = 0; i < alumnos.length; i++) {
-          if (valor2 == alumnos[i][alumno.nif]) {
+          if (valor2 == alumnos[i].nif) {
             return true;
           }
         }
-      } */
+      }
     </script>
     <h1>Matrícula alumnos</h1>
     <form>
