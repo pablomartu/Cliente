@@ -1,5 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
+<<<<<<< HEAD
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prueba 2ª evaluación</title>
+    <style>
+      .hoja {
+        color: green;
+      }
+
+      .rama {
+        color: brown;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      window.onload = inicio;
+
+      function inicio() {
+        document.getElementById("boton").addEventListener("click", borrar);
+        let encabezado = document.createElement("h3");
+        let encabezadoTxt = (encabezado.textContent = "Primer Arbol");
+        document.body.insertBefore(
+          encabezado,
+          document.getElementsByClassName("arbol")[0]
+        );
+      }
+
+      function borrar(e) {
+        e.preventDefault();
+        let pregunta = prompt("Dame el texto de la hoja borrar");
+        let lista = document.getElementsByTagName("li");
+
+        for (let i = 0; i < lista.length; i++) {
+          if (pregunta == lista[i].textContent) {
+            lista[i].remove();
+          } else {
+          }
+        }
+      }
+    </script>
+
+    <ul class="arbol">
+      <li class="rama">
+        Rama A
+        <ul class="rama">
+          <li class="hoja">Hoja A1</li>
+          <li class="hoja">Hoja A2</li>
+        </ul>
+      </li>
+      <li class="rama">
+        Rama B
+        <ul>
+          <li class="hoja">Hoja B1</li>
+          <li class="rama">
+            Rama BA
+            <ul class="rama">
+              <li class="hoja">Hoja BA1</li>
+              <li class="hoja">Hoja BA2</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="rama">
+        Rama C
+        <ul class="rama">
+          <li class="hoja">Hoja C1</li>
+          <li class="hoja">Hoja C2</li>
+        </ul>
+      </li>
+      <li class="rama">
+        Rama D
+        <ul class="rama">
+          <li class="hoja">Hoja D1</li>
+        </ul>
+      </li>
+    </ul>
+    <button id="boton">Borrar hoja</button>
+
+    <script></script>
+  </body>
+</html>
+=======
 
 <head>
     <meta charset="UTF-8">
@@ -55,3 +141,4 @@
 </body>
 
 </html>
+>>>>>>> 4717b8e03026c2bbad8970ae3de3c5d5fe1a3232
