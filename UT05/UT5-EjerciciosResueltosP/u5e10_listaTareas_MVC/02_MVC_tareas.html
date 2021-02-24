@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVC en JavaScript</title>
+</head>
+<script>
+    // MODELO
+    let tareas = ["Cumpleaños de...", "Cita en el dentista", "Recoger ropa en la tintorería"];
+
+    // VISTAS
+    function indexView(tareas) {
+        let html = `<ul>`;
+        for (let i = 0; i < tareas.length; i++) {
+            html += `<li> ${tareas[i]} <button id="delete" data-index="${i}">Borrar</button></li>`;
+        }
+        return html + `</ul> <button id="new">Crear</button> <button id="deleteAll">Eliminar todas</button>`;
+    };
+
+    function newView() {
+        return `Introducir nueva tarea: <input type="text" id="tarea"> <button id="create">Añadir</button>`
+    };
+
+    // CONTROLADORES
+    function indexContr() {
+        document.getElementById("main").innerHTML = indexView(tareas);
+    };
+
+    function newContr() {
+        document.getElementById("main").innerHTML = newView();
+    };
+
+    function createContr() {
+        tareas.push(document.getElementById("tarea").value);
+        indexContr();
+    };
+
+    function deleteContr(i) {
+        tareas.splice(i, 1);
+        indexContr();
+    };
+
+    function deleteAllContr() {
+        tareas = [];
+        indexContr();
+    };
+
+    // EVENTOS 
+    document.addEventListener("DOMContentLoaded", indexContr);
+    document.addEventListener("click", ev => {
+        if (ev.target.matches("#new")) newContr();
+        else if (ev.target.matches("#create")) createContr();
+        else if (ev.target.matches("#delete")) deleteContr(ev.target.dataset.index);
+        else if (ev.target.matches("#deleteAll")) deleteAllContr();
+    })
+
+    /* 
+    ROUTER DE EVENTOS
+    Instala los manejadores asociados a los diferentes tipos de eventos en document:
+    ** Los eventos (clicks en botones) burbujean hasta ser capturados en document
+    ** El atributo id de cada botón indica el controlador asociado, por ejemplo <button id="new">...
+    El manejador de eventos recibe el objeto DOM del elemento clicado en ev.target
+    **El método matches(<selector-CSS>) es true si <selector-CSS> casa con el objeto DOM clicado
+    HTML permite definir atributos de datos data-*, por ejemplo data-index="2"
+    ** Los valores asignados a estos atributos estarán en propiedades (en camel-case) de ev.target.dataset
+    ** Por ejemplo, data-id="2" y data-my-id="2" generan las propiedades {.., id:2, myId:2, ..} en ev.target.dataset
+    */
+</script>
+</head>
+
+<body>
+    <h1>Tareas</h1>
+    <div id="main"></div>
+</body>
+
+</html>

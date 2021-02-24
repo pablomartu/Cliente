@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVC en JavaScript</title>
+</head>
+<script>
+    /*
+    MVC (MODELO VISTA CONTROLADOR) DE CLIENTE
+    ** Evento: mueve la aplicación ejecutando controladores (manejadores de eventos)
+    ** Modelo: conjunto de datos de la aplicación
+    ** Vista: Generador de la representación visual, Función que genera el código HTML que muestra los datos del modelo
+    ** Controlador: dirige la respuesta a una petición del usuario. Normalmente, busca los datos, los formatea con la Vista y los muestra
+    */
+   
+    // MODELO
+    let tareas = ["Cumpleaños de...", "Cita en el dentista", "Recoger ropa en la tintorería"];
+
+    // VISTA
+    function indexView(tareas) {
+        let html = "<ul>";
+        for (let i = 0; i < tareas.length; i++) {
+            html += `<li> ${tareas[i]}</li>`;
+        }
+        return html + "</ul>";
+    };
+
+    // CONTROLADOR 
+    function indexContr() {
+        document.getElementById("main").innerHTML = indexView(tareas);
+    };
+
+    // EVENTOS 
+    document.addEventListener("DOMContentLoaded", indexContr);
+</script>
+</head>
+
+<body>
+    <h1>Tareas</h1>
+    <div id="main"></div>
+</body>
+
+</html>
